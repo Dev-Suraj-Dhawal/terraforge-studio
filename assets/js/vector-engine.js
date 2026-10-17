@@ -427,3 +427,4 @@ window.addEventListener('pointerup', () => {
     dragState.isDragging = false;
     dragState.instanceId = null;
 });
+

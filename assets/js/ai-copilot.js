@@ -394,3 +394,4 @@ export function copySubmissionMarkdown() {
     if (!box) return;
     copyTextToClipboard(box.value, 'Copied Dev.to Challenge Submission Markdown!');
 }
+

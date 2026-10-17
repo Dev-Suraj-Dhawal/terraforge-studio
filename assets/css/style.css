@@ -129,3 +129,4 @@ input[type="range"]:active::-webkit-slider-thumb {
     background-size: 200% 100%;
     animation: subtleShimmer 3.5s infinite;
 }
+

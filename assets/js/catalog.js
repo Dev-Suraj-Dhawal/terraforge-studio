@@ -236,3 +236,4 @@ export const BIOME_CATALOG = [
         description: 'Adorable detritivores that cycle decaying leaves into plant nutrients.'
     }
 ];
+
