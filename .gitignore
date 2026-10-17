@@ -1,0 +1,21 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment and Local Secrets
+.env
+.env.local
+*.log
+
+# Node & Package Managers
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE / Editor Folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
