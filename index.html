@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraForge AI | Interactive Terrarium Studio & Open-Source Side Hustle Engine</title>
+    <title>TerraForge Studio | Interactive Terrarium CAD & Local AI Commerce OS</title>
+    
+    <!-- External Typography & Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom Theme & Modular Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -53,225 +59,175 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #0d1914;
-            color: #f7f4eb;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
-        /* Custom Scrollbars */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(19, 38, 31, 0.6);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #386a56;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #dc6e46;
-        }
-        .glass-panel {
-            background: rgba(19, 38, 31, 0.78);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(156, 194, 176, 0.16);
-        }
-        .parchment-card {
-            background: #fcfbf7;
-            color: #13261f;
-            border: 1px solid #e2d7b8;
-        }
-        .terrarium-stage {
-            background: radial-gradient(circle at 50% 35%, rgba(76, 133, 110, 0.24) 0%, rgba(13, 25, 20, 0.92) 75%);
-        }
-        .selected-item-ring {
-            filter: drop-shadow(0 0 8px rgba(220, 110, 70, 0.95));
-        }
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-        }
-        .animate-float {
-            animation: floatSlow 5s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.85; }
-        }
-        .mist-particle {
-            animation: pulseGlow 4s ease-in-out infinite;
-        }
-        input[type="range"] {
-            accent-color: #dc6e46;
-        }
-    </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-terracotta-500 selection:text-white">
 
     <!-- Top Navigation Bar -->
     <header class="glass-panel sticky top-0 z-40 border-b border-forest-700/60 px-4 lg:px-6 py-3">
-        <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-3">
+        <div class="max-w-[1650px] mx-auto flex flex-wrap items-center justify-between gap-3">
+            
             <!-- Brand Title -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-forest-500 to-forest-800 border border-forest-400/40 flex items-center justify-center shadow-lg shadow-black/30">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-forest-500 to-forest-800 border border-forest-400/40 flex items-center justify-center shadow-lg shadow-black/40">
                     <i class="ph-fill ph-potted-plant text-2xl text-terracotta-400"></i>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
                         <h1 class="font-serif font-bold text-lg sm:text-xl tracking-tight text-parchment-50">TerraForge <span class="text-terracotta-400 font-normal italic">Studio</span></h1>
-                        <span class="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-terracotta-500/20 text-terracotta-300 border border-terracotta-500/40 font-semibold">Side Hustle OS</span>
+                        <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-terracotta-500/20 text-terracotta-300 border border-terracotta-500/40 font-semibold">Side Hustle OS</span>
                     </div>
-                    <p class="text-xs text-forest-300 hidden sm:block">Bespoke Terrarium CAD, Margin Calculator & Local Open-Weight AI Commerce Suite</p>
+                    <p class="text-xs text-forest-300 hidden sm:block">Interactive Terrarium CAD, Ecosystem Telemetry & Local Open-Weight AI Engine</p>
                 </div>
             </div>
 
-            <!-- Preset Quick Loaders -->
-            <div class="flex items-center gap-1.5 bg-forest-950/80 p-1.5 rounded-xl border border-forest-800">
-                <span class="text-xs text-forest-400 px-2 font-medium hidden md:inline"><i class="ph ph-sparkle mr-1 text-terracotta-400"></i>Presets:</span>
-                <button onclick="loadPreset('zen')" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5">
+            <!-- Quick Preset Selectors -->
+            <div class="flex items-center gap-1.5 bg-forest-950/80 p-1.5 rounded-2xl border border-forest-800">
+                <span class="text-xs text-forest-400 px-2 font-medium hidden md:flex items-center gap-1">
+                    <i class="ph ph-sparkle text-terracotta-400"></i> Presets:
+                </span>
+                <button onclick="window.terraforge.loadPreset('zen')" class="px-2.5 py-1.5 rounded-xl text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5 shadow-sm">
                     <span>🪨</span> Zen Mossarium
                 </button>
-                <button onclick="loadPreset('tropical')" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5">
+                <button onclick="window.terraforge.loadPreset('tropical')" class="px-2.5 py-1.5 rounded-xl text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5 shadow-sm">
                     <span>🌿</span> Fittonia Rainforest
                 </button>
-                <button onclick="loadPreset('desert')" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5">
-                    <span>🌵</span> Conflict Test (Bio-Alert)
+                <button onclick="window.terraforge.loadPreset('desert')" class="px-2.5 py-1.5 rounded-xl text-xs font-medium bg-forest-800/80 hover:bg-forest-700 text-parchment-100 transition flex items-center gap-1.5 shadow-sm">
+                    <span>🌵</span> Bio-Conflict Test
                 </button>
             </div>
 
-            <!-- Open-Source AI Engine Status & Challenge Submission Button -->
+            <!-- AI Engine Selector & Open-Source Hub Button -->
             <div class="flex items-center gap-2.5">
-                <!-- Local vs Cloud AI Runtime Switcher -->
-                <div class="flex items-center bg-forest-950/90 border border-forest-700/80 rounded-xl p-1 text-xs">
-                    <button id="modeLocalBtn" onclick="setAIEngineMode('ollama')" class="px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 bg-forest-700 text-emerald-300 font-medium transition">
+                <!-- Local vs Hybrid Engine Switcher -->
+                <div class="flex items-center bg-forest-950/90 border border-forest-700/80 rounded-2xl p-1 text-xs shadow-inner">
+                    <button id="modeLocalBtn" onclick="window.terraforge.setAIEngineMode('ollama')" class="px-2.5 py-1 rounded-xl font-mono flex items-center gap-1.5 bg-forest-700 text-emerald-300 font-medium transition shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Ollama: Llama-3.2 + Gemini
+                        Ollama: Llama-3.2
                     </button>
-                    <button id="modeWebGPUBtn" onclick="setAIEngineMode('webgpu')" class="px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 text-forest-300 hover:text-white transition">
+                    <button id="modeWebGPUBtn" onclick="window.terraforge.setAIEngineMode('webgpu')" class="px-2.5 py-1 rounded-xl font-mono flex items-center gap-1.5 text-forest-300 hover:text-white transition">
                         <i class="ph ph-cpu"></i>
                         Qwen-2.5-Local
                     </button>
                 </div>
 
-                <button onclick="openModal('challengeModal')" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-terracotta-600 to-terracotta-500 hover:from-terracotta-500 hover:to-terracotta-400 text-white font-semibold text-xs flex items-center gap-2 shadow-lg shadow-terracotta-900/50 transition">
-                    <i class="ph-bold ph-code-block text-sm"></i>
-                    <span>Open-Source Challenge Post</span>
+                <button onclick="window.terraforge.openModal('challengeModal')" class="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-terracotta-600 to-terracotta-500 hover:from-terracotta-500 hover:to-terracotta-400 text-white font-semibold text-xs flex items-center gap-2 shadow-lg shadow-terracotta-900/40 transition">
+                    <i class="ph-bold ph-terminal-window text-sm"></i>
+                    <span class="hidden sm:inline">Open-Source AI Hub</span>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Main 3-Column Studio Layout -->
-    <main class="flex-1 max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:p-6">
+    <main class="flex-1 max-w-[1650px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:p-6">
 
-        <!-- LEFT COLUMN: Vessel, Substrate Layers & Botanical Catalog (3 Cols) -->
+        <!-- LEFT COLUMN: Vessel, Substrates & Botanical Palette (3 Cols) -->
         <section class="lg:col-span-3 flex flex-col gap-4">
-            <!-- Step Selector Tabs -->
-            <div class="glass-panel rounded-2xl p-1.5 grid grid-cols-3 gap-1">
-                <button onclick="switchLeftTab('vessel')" id="tabBtn-vessel" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 bg-forest-700 text-white shadow transition">
+            
+            <!-- Step Navigation Tabs -->
+            <div class="glass-panel rounded-2xl p-1.5 grid grid-cols-3 gap-1 shadow-sm">
+                <button onclick="window.terraforge.switchLeftTab('vessel')" id="tabBtn-vessel" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 bg-forest-700 text-white shadow transition">
                     <i class="ph-fill ph-flask"></i> 1. Vessel
                 </button>
-                <button onclick="switchLeftTab('substrate')" id="tabBtn-substrate" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-forest-300 hover:text-white transition">
+                <button onclick="window.terraforge.switchLeftTab('substrate')" id="tabBtn-substrate" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-forest-300 hover:text-white transition">
                     <i class="ph-fill ph-stack"></i> 2. Layers
                 </button>
-                <button onclick="switchLeftTab('flora')" id="tabBtn-flora" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-forest-300 hover:text-white transition">
+                <button onclick="window.terraforge.switchLeftTab('flora')" id="tabBtn-flora" class="py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-forest-300 hover:text-white transition">
                     <i class="ph-fill ph-leaf"></i> 3. Biome
                 </button>
             </div>
 
-            <!-- TAB 1: Vessel & Environment Settings -->
-            <div id="leftTab-vessel" class="glass-panel rounded-2xl p-4 flex flex-col gap-4">
+            <!-- TAB 1: Vessel & Enclosure Controls -->
+            <div id="leftTab-vessel" class="glass-panel rounded-3xl p-4 sm:p-5 flex flex-col gap-4">
                 <div>
                     <h2 class="font-serif text-base font-semibold text-parchment-100 flex items-center justify-between">
-                        <span>Select Glass Vessel</span>
-                        <span id="vesselCostBadge" class="text-xs font-mono text-terracotta-300">$18.00 wholesale</span>
+                        <span>Select Glass Enclosure</span>
+                        <span id="vesselCostBadge" class="text-xs font-mono text-terracotta-300 font-bold">$18.00 wholesale</span>
                     </h2>
-                    <p class="text-xs text-forest-300 mt-0.5">Container geometry dictates humidity retention and airflow.</p>
+                    <p class="text-xs text-forest-300 mt-0.5">Vessel shape defines internal microclimate and humidity retention.</p>
                 </div>
 
-                <div class="grid grid-cols-1 gap-2" id="vesselSelectorList">
-                    <!-- Populated by JS -->
+                <div class="grid grid-cols-1 gap-2.5" id="vesselSelectorList">
+                    <!-- Populated dynamically by app.js -->
                 </div>
 
-                <div class="border-t border-forest-800 pt-3 flex flex-col gap-3">
+                <div class="border-t border-forest-800 pt-3.5 flex flex-col gap-3.5">
                     <div class="flex items-center justify-between">
                         <div>
-                            <label class="text-xs font-semibold text-parchment-100 block">Enclosure Lid / Cork Top</label>
-                            <span class="text-[11px] text-forest-300">Seals moisture for tropical self-watering loops</span>
+                            <label class="text-xs font-semibold text-parchment-100 block">Cork Lid Enclosure</label>
+                            <span class="text-[11px] text-forest-300">Seals moisture for self-watering cycle</span>
                         </div>
-                        <button id="lidToggleBtn" onclick="toggleCorkLid()" class="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-emerald-600/30 text-emerald-300 border border-emerald-500/40">
-                            SEALED (CLOSED)
+                        <button id="lidToggleBtn" onclick="window.terraforge.toggleCorkLid()" class="px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5 transition">
+                            <i class="ph-bold ph-lock-key"></i> SEALED (CLOSED)
                         </button>
                     </div>
 
                     <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <span class="text-forest-300 font-medium">Grow Light / Ambient Lux</span>
-                            <span id="lightLevelLabel" class="font-mono text-amber-300">Indirect Bright (65%)</span>
+                        <div class="flex justify-between text-xs mb-1.5">
+                            <span class="text-forest-300 font-medium">Grow Light Lux / Ambient Lumens</span>
+                            <span id="lightLevelLabel" class="font-mono text-amber-300 font-semibold">Indirect Bright (65%)</span>
                         </div>
-                        <input id="lightSlider" type="range" min="15" max="100" value="65" oninput="updateEnvironment()" class="w-full h-1.5 bg-forest-800 rounded-lg cursor-pointer">
+                        <input id="lightSlider" type="range" min="15" max="100" value="65" oninput="window.terraforge.updateEnvironment()" class="w-full h-1.5 bg-forest-800 rounded-lg cursor-pointer">
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 2: Substrate Layering Customizer -->
-            <div id="leftTab-substrate" class="glass-panel rounded-2xl p-4 hidden flex-col gap-3.5">
+            <!-- TAB 2: Substrate Stratigraphy Layering -->
+            <div id="leftTab-substrate" class="glass-panel rounded-3xl p-4 sm:p-5 hidden flex-col gap-3.5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h2 class="font-serif text-base font-semibold text-parchment-100">Substrate Stratigraphy</h2>
-                        <p class="text-xs text-forest-300">Adjust drainage, filtration & bio-active soil depth.</p>
+                        <h2 class="font-serif text-base font-semibold text-parchment-100">Stratigraphy Stratum</h2>
+                        <p class="text-xs text-forest-300">Adjust false-bottom drainage, charcoal, and bio-soil depth.</p>
                     </div>
-                    <button onclick="resetSubstrates()" class="text-xs text-terracotta-400 hover:underline font-mono">Reset</button>
+                    <button onclick="window.terraforge.resetSubstrates()" class="text-xs text-terracotta-400 hover:underline font-mono font-semibold">
+                        Reset
+                    </button>
                 </div>
 
-                <div id="substrateControlsList" class="flex flex-col gap-3">
-                    <!-- Populated by JS -->
+                <div id="substrateControlsList" class="flex flex-col gap-2.5">
+                    <!-- Populated dynamically by app.js -->
                 </div>
 
-                <div class="p-3 rounded-xl bg-forest-950/80 border border-forest-800 text-xs text-forest-200 flex items-start gap-2.5">
+                <div class="p-3 rounded-2xl bg-forest-950/80 border border-forest-800 text-xs text-forest-200 flex items-start gap-2.5">
                     <i class="ph-fill ph-info text-terracotta-400 text-base mt-0.5 shrink-0"></i>
                     <div>
-                        <span class="font-semibold text-parchment-100">Drainage Rule:</span> Closed terrariums need at least <span class="font-mono text-emerald-300">18mm</span> of LECA pebbles + activated charcoal to prevent root rot.
+                        <span class="font-semibold text-parchment-100">Biological Rule:</span> Closed terrariums require at least <span class="font-mono text-emerald-300 font-semibold">18mm</span> of LECA pebbles and activated charcoal to prevent root rot.
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 3: Flora, Hardscape & Micro-Fauna Palette -->
-            <div id="leftTab-flora" class="glass-panel rounded-2xl p-4 hidden flex-col gap-3">
+            <!-- TAB 3: Botanical & Hardscape Catalog -->
+            <div id="leftTab-flora" class="glass-panel rounded-3xl p-4 sm:p-5 hidden flex-col gap-3">
                 <div>
-                    <h2 class="font-serif text-base font-semibold text-parchment-100">Botanical & Hardscape Palette</h2>
-                    <p class="text-xs text-forest-300">Click any specimen to plant inside your terrarium, then drag to position.</p>
+                    <h2 class="font-serif text-base font-semibold text-parchment-100">Specimen Palette</h2>
+                    <p class="text-xs text-forest-300">Click any item to plant into your terrarium, then drag to position.</p>
                 </div>
 
-                <!-- Category Filter Pills -->
-                <div class="flex gap-1 bg-forest-950 p-1 rounded-xl border border-forest-800 text-xs">
-                    <button onclick="filterCatalog('all')" id="catFilter-all" class="flex-1 py-1 rounded-lg bg-forest-700 text-white font-medium">All</button>
-                    <button onclick="filterCatalog('plant')" id="catFilter-plant" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Flora</button>
-                    <button onclick="filterCatalog('hardscape')" id="catFilter-hardscape" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Stone/Wood</button>
-                    <button onclick="filterCatalog('fauna')" id="catFilter-fauna" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Clean-up Crew</button>
+                <!-- Category Pills -->
+                <div class="flex gap-1 bg-forest-950 p-1 rounded-2xl border border-forest-800 text-xs">
+                    <button onclick="window.terraforge.filterCatalog('all')" id="catFilter-all" class="flex-1 py-1 rounded-lg bg-forest-700 text-white font-medium">All</button>
+                    <button onclick="window.terraforge.filterCatalog('plant')" id="catFilter-plant" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Flora</button>
+                    <button onclick="window.terraforge.filterCatalog('hardscape')" id="catFilter-hardscape" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Stone/Wood</button>
+                    <button onclick="window.terraforge.filterCatalog('fauna')" id="catFilter-fauna" class="flex-1 py-1 rounded-lg text-forest-300 hover:text-white">Fauna</button>
                 </div>
 
-                <!-- Catalog Grid -->
+                <!-- Specimen Grid -->
                 <div id="catalogGrid" class="grid grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1">
-                    <!-- Populated by JS -->
+                    <!-- Populated dynamically by app.js -->
                 </div>
             </div>
 
-            <!-- Selected Specimen Inspector Panel -->
-            <div id="itemInspectorPanel" class="glass-panel rounded-2xl p-4 border border-terracotta-500/40 hidden flex-col gap-3">
+            <!-- Selected Specimen Inspector -->
+            <div id="itemInspectorPanel" class="glass-panel rounded-3xl p-4 border border-terracotta-500/40 hidden flex-col gap-3 shadow-lg">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                        <span id="inspectorEmoji" class="text-lg">🌿</span>
+                        <span id="inspectorEmoji" class="text-xl">🌿</span>
                         <div>
-                            <h3 id="inspectorName" class="text-xs font-bold text-parchment-50">Fittonia Nerve Plant</h3>
-                            <p id="inspectorLatin" class="text-[11px] italic text-forest-300">Fittonia albivenis</p>
+                            <h3 id="inspectorName" class="text-xs font-bold text-parchment-50">Specimen Name</h3>
+                            <p id="inspectorLatin" class="text-[11px] italic text-forest-300">Botanical name</p>
                         </div>
                     </div>
-                    <button onclick="deleteSelectedItem()" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-300 transition" title="Remove Specimen">
+                    <button onclick="window.terraforge.deleteSelectedItem()" class="p-1.5 rounded-xl bg-red-500/20 hover:bg-red-500/40 text-red-300 transition" title="Remove Specimen">
                         <i class="ph-bold ph-trash"></i>
                     </button>
                 </div>
@@ -282,60 +238,60 @@
                             <span>Scale</span>
                             <span id="inspectorScaleVal" class="font-mono">1.0x</span>
                         </div>
-                        <input id="inspectorScale" type="range" min="0.5" max="1.8" step="0.05" value="1" oninput="updateSelectedItemTransform()" class="w-full h-1.5 bg-forest-800 rounded-lg">
+                        <input id="inspectorScale" type="range" min="0.5" max="1.8" step="0.05" value="1" oninput="window.terraforge.updateSelectedItemTransform()" class="w-full h-1.5 bg-forest-800 rounded-lg">
                     </div>
                     <div>
                         <div class="flex justify-between text-[11px] text-forest-300 mb-1">
                             <span>Rotation</span>
                             <span id="inspectorRotVal" class="font-mono">0°</span>
                         </div>
-                        <input id="inspectorRot" type="range" min="-45" max="45" step="1" value="0" oninput="updateSelectedItemTransform()" class="w-full h-1.5 bg-forest-800 rounded-lg">
+                        <input id="inspectorRot" type="range" min="-45" max="45" step="1" value="0" oninput="window.terraforge.updateSelectedItemTransform()" class="w-full h-1.5 bg-forest-800 rounded-lg">
                     </div>
                 </div>
 
                 <div class="flex items-center justify-between gap-2 pt-1">
-                    <button onclick="changeSelectedItemLayer(-1)" class="flex-1 py-1.5 px-2 rounded-lg bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1">
-                        <i class="ph ph-arrow-fat-lines-down"></i> Send Back
+                    <button onclick="window.terraforge.changeSelectedItemLayer(-1)" class="flex-1 py-1.5 px-2 rounded-xl bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1 transition">
+                        <i class="ph ph-arrow-fat-lines-down"></i> Back
                     </button>
-                    <button onclick="flipSelectedItem()" class="flex-1 py-1.5 px-2 rounded-lg bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1">
-                        <i class="ph ph-arrows-left-right"></i> Mirror
+                    <button onclick="window.terraforge.flipSelectedItem()" class="flex-1 py-1.5 px-2 rounded-xl bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1 transition">
+                        <i class="ph ph-arrows-left-right"></i> Flip
                     </button>
-                    <button onclick="changeSelectedItemLayer(1)" class="flex-1 py-1.5 px-2 rounded-lg bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1">
-                        <i class="ph ph-arrow-fat-lines-up"></i> Bring Front
+                    <button onclick="window.terraforge.changeSelectedItemLayer(1)" class="flex-1 py-1.5 px-2 rounded-xl bg-forest-800 hover:bg-forest-700 text-xs flex items-center justify-center gap-1 transition">
+                        <i class="ph ph-arrow-fat-lines-up"></i> Front
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- CENTER COLUMN: Interactive Terrarium Visual Canvas & Bio-Compatibility Simulator (5 Cols) -->
+        <!-- CENTER COLUMN: Interactive Terrarium Canvas & Bio-Compatibility Simulator (5 Cols) -->
         <section class="lg:col-span-5 flex flex-col gap-4">
-            <!-- Main Interactive Terrarium Canvas Card -->
-            <div class="glass-panel rounded-3xl p-4 sm:p-5 flex-1 flex flex-col justify-between relative overflow-hidden terrarium-stage min-h-[540px]">
+            
+            <div class="glass-panel rounded-3xl p-4 sm:p-5 flex-1 flex flex-col justify-between relative overflow-hidden terrarium-stage min-h-[560px]">
                 
-                <!-- Top Floating Telemetry Bar -->
+                <!-- Floating Telemetry Status Bar -->
                 <div class="flex flex-wrap items-center justify-between gap-2 z-10">
-                    <div class="flex items-center gap-2 bg-forest-950/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-forest-700/60">
-                        <span id="bioScoreIndicator" class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                        <span class="text-xs font-medium text-parchment-100">Ecosystem Score:</span>
+                    <div class="flex items-center gap-2 bg-forest-950/85 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-forest-700/60 shadow-md">
+                        <span id="bioScoreIndicator" class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                        <span class="text-xs font-semibold text-parchment-100">Viability Index:</span>
                         <span id="bioScoreValue" class="font-mono font-bold text-sm text-emerald-400">96%</span>
                     </div>
 
-                    <div class="flex items-center gap-2 bg-forest-950/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-forest-700/60 text-xs font-mono">
-                        <span title="Internal Relative Humidity" class="flex items-center gap-1 text-sky-300">
-                            <i class="ph-fill ph-drop"></i> <span id="telemetryHumidity">82% RH</span>
+                    <div class="flex items-center gap-2 bg-forest-950/85 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-forest-700/60 text-xs font-mono shadow-md">
+                        <span title="Relative Humidity" class="flex items-center gap-1.5 text-sky-300">
+                            <i class="ph-fill ph-drop"></i> <span id="telemetryHumidity">84% RH</span>
                         </span>
                         <span class="text-forest-600">|</span>
-                        <span title="Clean-up Crew Bio-load Balance" class="flex items-center gap-1 text-amber-300">
+                        <span title="Clean-up Crew Bio-load" class="flex items-center gap-1.5 text-amber-300">
                             <i class="ph-fill ph-bug-beetle"></i> <span id="telemetryBioactive">Bio-Active</span>
                         </span>
                     </div>
                 </div>
 
-                <!-- Interactive SVG Terrarium Stage -->
+                <!-- Interactive SVG Terrarium Canvas -->
                 <div class="relative flex-1 flex items-center justify-center my-2 select-none">
-                    <svg id="terrariumSvg" viewBox="0 0 500 540" class="w-full max-w-[460px] h-auto max-h-[460px] drop-shadow-2xl touch-none">
+                    <svg id="terrariumSvg" viewBox="0 0 500 540" class="w-full max-w-[480px] h-auto max-h-[470px] drop-shadow-2xl touch-none">
                         <defs>
-                            <!-- Clip Paths for Each Vessel Geometry -->
+                            <!-- Vessel Clip Paths -->
                             <clipPath id="clip-wardian">
                                 <polygon points="150,70 350,70 430,190 390,485 110,485 70,190" />
                             </clipPath>
@@ -352,7 +308,7 @@
                                 <rect x="115" y="75" width="270" height="410" rx="28" />
                             </clipPath>
 
-                            <!-- Lighting & Glass Reflections -->
+                            <!-- Glass Lighting Shaders -->
                             <linearGradient id="glassSheen" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
                                 <stop offset="35%" stop-color="#ffffff" stop-opacity="0.04" />
@@ -398,25 +354,18 @@
                             </pattern>
                         </defs>
 
-                        <!-- Wooden Pedestal Base -->
+                        <!-- Wooden Pedestal -->
                         <ellipse cx="250" cy="492" rx="165" ry="16" fill="#2a1a12" stroke="#472e21" stroke-width="2" />
                         <ellipse cx="250" cy="487" rx="155" ry="12" fill="#3c261b" />
 
-                        <!-- Clipped Interior of Terrarium (Glow, Substrates, Placed Items, Mist) -->
+                        <!-- Clipped Interior -->
                         <g id="vesselInteriorClipGroup" clip-path="url(#clip-wardian)">
-                            <!-- Ambient Grow Light Cone -->
                             <rect id="svgGrowLightRect" x="50" y="50" width="400" height="450" fill="url(#growLightGlow)" opacity="0.7" />
-
-                            <!-- Background Glass Tint -->
                             <rect x="50" y="50" width="400" height="450" fill="#dff5ea" opacity="0.06" />
-
-                            <!-- Placed Specimens Behind Soil Surface (Back Layer) -->
                             <g id="placedItemsGroup"></g>
-
-                            <!-- Dynamic Substrate Stack -->
                             <g id="substrateLayersSvgGroup"></g>
-
-                            <!-- Front Humidity Condensation / Mist Particles -->
+                            
+                            <!-- Ambient Condensation Mist -->
                             <g id="humidityMistGroup" opacity="0.6" class="pointer-events-none">
                                 <circle cx="140" cy="180" r="2.5" fill="#e0f2fe" class="mist-particle" />
                                 <circle cx="350" cy="210" r="2" fill="#e0f2fe" class="mist-particle" />
@@ -425,132 +374,143 @@
                             </g>
                         </g>
 
-                        <!-- Cork / Copper Lid Group -->
+                        <!-- Vessel Lid & Outline -->
                         <g id="vesselLidSvgGroup"></g>
-
-                        <!-- Outer Glass Frame & Specular Highlights -->
                         <g id="vesselGlassOutlineGroup" class="pointer-events-none"></g>
                     </svg>
 
-                    <!-- Floating Helper Hint -->
-                    <div class="absolute bottom-1 left-2 right-2 flex items-center justify-between pointer-events-none text-[11px] text-forest-300 px-2">
-                        <span class="bg-forest-950/80 px-2.5 py-1 rounded-lg border border-forest-800/80">
-                            <i class="ph ph-hand-grabbing text-terracotta-400 mr-1"></i>Drag specimens inside glass • Click to scale/rotate
+                    <!-- Interactive Bottom Canvas Bar -->
+                    <div class="absolute bottom-1 left-2 right-2 flex items-center justify-between text-[11px] text-forest-300 px-2">
+                        <span class="bg-forest-950/85 px-3 py-1.5 rounded-xl border border-forest-800/80 shadow-md">
+                            <i class="ph ph-hand-grabbing text-terracotta-400 mr-1"></i>Drag specimens • Click to scale & rotate
                         </span>
-                        <button onclick="exportTerrariumSnapshot()" class="pointer-events-auto bg-forest-900/90 hover:bg-forest-800 text-parchment-100 px-2.5 py-1 rounded-lg border border-forest-700 transition flex items-center gap-1">
-                            <i class="ph ph-camera"></i> Save Blueprint SVG
-                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="window.terraforge.clearAllSpecimens()" class="bg-forest-900/90 hover:bg-forest-800 text-forest-300 hover:text-white px-2.5 py-1.5 rounded-xl border border-forest-700 transition flex items-center gap-1" title="Clear All Specimens">
+                                <i class="ph ph-trash"></i> Clear
+                            </button>
+                            <button onclick="window.terraforge.exportTerrariumSnapshot()" class="bg-forest-900/90 hover:bg-forest-800 text-parchment-100 px-3 py-1.5 rounded-xl border border-forest-700 transition flex items-center gap-1.5 shadow-sm">
+                                <i class="ph ph-camera"></i> Save Blueprint
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Bottom Bio-Compatibility & Microclimate Diagnostic Banner -->
-                <div id="bioDiagnosticBanner" class="bg-forest-950/90 border border-forest-700/80 rounded-2xl p-3 flex flex-col gap-1.5 z-10">
+                <!-- Bottom Bio-Compatibility Banner -->
+                <div id="bioDiagnosticBanner" class="bg-forest-950/90 border border-forest-700/80 rounded-2xl p-3.5 flex flex-col gap-1.5 z-10 shadow-lg">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-semibold uppercase tracking-wider text-forest-300 flex items-center gap-1.5">
-                            <i class="ph-fill ph-pulse text-emerald-400"></i> Live Bio-Compatibility Engine
+                            <i class="ph-fill ph-pulse text-emerald-400"></i> Live Microclimate Diagnostics
                         </span>
-                        <span id="maintenanceBadge" class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Self-Sustaining Loop</span>
+                        <span id="maintenanceBadge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">Self-Sustaining Loop</span>
                     </div>
                     <div id="bioAlertsContainer" class="text-xs text-parchment-200 space-y-1">
-                        <!-- Populated dynamically by JS -->
+                        <!-- Populated dynamically by bio-simulator.js -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- RIGHT COLUMN: Side Hustle Studio (Pricing Engine + Open-Source AI Generators) (4 Cols) -->
+        <!-- RIGHT COLUMN: Side Hustle Studio (Margin Engine + AI Co-Pilot) (4 Cols) -->
         <section class="lg:col-span-4 flex flex-col gap-4">
             
-            <!-- Commercial Unit Economics & Margin Calculator Card -->
-            <div class="glass-panel rounded-2xl p-4 flex flex-col gap-3">
+            <!-- Commercial Unit Economics Card -->
+            <div class="glass-panel rounded-3xl p-4 sm:p-5 flex flex-col gap-3.5 shadow-lg">
                 <div class="flex items-center justify-between">
                     <div>
                         <h2 class="font-serif text-base font-semibold text-parchment-100 flex items-center gap-2">
                             <i class="ph-fill ph-storefront text-terracotta-400"></i>
-                            Side Hustle Unit Economics
+                            Unit Economics & Margins
                         </h2>
-                        <p class="text-xs text-forest-300">Real-time BOM (Bill of Materials) & Etsy/Local Shop Margin</p>
+                        <p class="text-xs text-forest-300">Bill of Materials (BOM) & Marketplace Margin</p>
                     </div>
-                    <span class="text-xs font-mono px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold">
-                        $0 AI API Cost
+                    <span class="text-xs font-mono px-2.5 py-1 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1">
+                        <i class="ph-bold ph-shield-check"></i> $0 API Fee
                     </span>
                 </div>
 
-                <!-- Cost Breakdown Grid -->
-                <div class="grid grid-cols-4 gap-2 bg-forest-950/80 p-3 rounded-xl border border-forest-800 text-center">
+                <!-- Financial Telemetry Grid -->
+                <div class="grid grid-cols-4 gap-2 bg-forest-950/85 p-3 rounded-2xl border border-forest-800 text-center shadow-inner">
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block">COGS (Raw)</span>
+                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block font-medium">COGS (Raw)</span>
                         <span id="econCogs" class="font-mono font-bold text-sm text-parchment-100">$28.50</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block">Labor/Pack</span>
+                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block font-medium">Labor/Pack</span>
                         <span id="econLabor" class="font-mono font-bold text-sm text-parchment-100">$16.00</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block">Retail Price</span>
-                        <span id="econRetail" class="font-mono font-bold text-sm text-terracotta-400">$98.00</span>
+                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block font-medium">Retail Price</span>
+                        <span id="econRetail" class="font-mono font-bold text-sm text-terracotta-400 font-extrabold">$98.00</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block">Net Profit</span>
-                        <span id="econProfit" class="font-mono font-bold text-sm text-emerald-400">+$53.50 (55%)</span>
+                        <span class="text-[10px] uppercase tracking-wider text-forest-400 block font-medium">Net Profit</span>
+                        <span id="econProfit" class="font-mono font-bold text-sm text-emerald-400 font-extrabold">+$53.50 (55%)</span>
                     </div>
                 </div>
 
                 <!-- Sliders for Labor & Target Markup -->
                 <div class="grid grid-cols-2 gap-3 text-xs">
                     <div>
-                        <div class="flex justify-between text-forest-300 mb-1">
-                            <span>Assembly & Safe Pack</span>
-                            <span id="laborValLabel" class="font-mono text-parchment-100">$16</span>
+                        <div class="flex justify-between text-forest-300 mb-1.5">
+                            <span>Assembly & Pack</span>
+                            <span id="laborValLabel" class="font-mono text-parchment-100 font-semibold">$16</span>
                         </div>
-                        <input id="laborInput" type="range" min="5" max="45" value="16" oninput="recalculateEconomics()" class="w-full h-1.5 bg-forest-800 rounded-lg">
+                        <input id="laborInput" type="range" min="5" max="45" value="16" oninput="window.terraforge.recalculateEconomics()" class="w-full h-1.5 bg-forest-800 rounded-lg">
                     </div>
                     <div>
-                        <div class="flex justify-between text-forest-300 mb-1">
+                        <div class="flex justify-between text-forest-300 mb-1.5">
                             <span>Retail Multiplier</span>
-                            <span id="markupValLabel" class="font-mono text-parchment-100">2.2x</span>
+                            <span id="markupValLabel" class="font-mono text-parchment-100 font-semibold">2.2x</span>
                         </div>
-                        <input id="markupInput" type="range" min="1.5" max="3.5" step="0.1" value="2.2" oninput="recalculateEconomics()" class="w-full h-1.5 bg-forest-800 rounded-lg">
+                        <input id="markupInput" type="range" min="1.5" max="3.5" step="0.1" value="2.2" oninput="window.terraforge.recalculateEconomics()" class="w-full h-1.5 bg-forest-800 rounded-lg">
                     </div>
                 </div>
             </div>
 
-            <!-- Open-Source AI Side Hustle Co-Pilot Card -->
-            <div class="glass-panel rounded-2xl p-4 flex-1 flex flex-col gap-3">
+            <!-- Open-Source AI Co-Pilot Card -->
+            <div class="glass-panel rounded-3xl p-4 sm:p-5 flex-1 flex flex-col gap-3.5 shadow-lg">
                 <div class="flex items-center justify-between border-b border-forest-800 pb-3">
                     <div>
                         <div class="flex items-center gap-2">
                             <h2 class="font-serif text-base font-semibold text-parchment-100">AI Side-Hustle Co-Pilot</h2>
-                            <span id="activeModelPill" class="text-[10px] font-mono px-2 py-0.5 rounded bg-forest-800 text-emerald-300 border border-emerald-500/30">llama3.2-vision:11b</span>
+                            <span id="activeModelPill" class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-forest-800 text-emerald-300 border border-emerald-500/30">llama3.2-vision:11b</span>
                         </div>
-                        <p class="text-xs text-forest-300 mt-0.5">Turn your current build into customer deliverables & listings.</p>
+                        <p class="text-xs text-forest-300 mt-0.5">Automated marketing, care cards & pathology audits.</p>
                     </div>
                 </div>
 
-                <!-- AI Action Tabs -->
-                <div class="grid grid-cols-3 gap-1.5 bg-forest-950 p-1 rounded-xl border border-forest-800 text-xs">
-                    <button onclick="switchAiTab('listing')" id="aiTabBtn-listing" class="py-2 px-2 rounded-lg font-semibold bg-terracotta-600 text-white transition flex items-center justify-center gap-1">
+                <!-- Generator Mode Tabs -->
+                <div class="grid grid-cols-3 gap-1.5 bg-forest-950 p-1 rounded-2xl border border-forest-800 text-xs">
+                    <button onclick="window.terraforge.switchAiTab('listing')" id="aiTabBtn-listing" class="py-2 px-2 rounded-xl font-semibold bg-terracotta-600 text-white transition flex items-center justify-center gap-1 shadow-sm">
                         <i class="ph-fill ph-tag"></i> Etsy SEO
                     </button>
-                    <button onclick="switchAiTab('caresheet')" id="aiTabBtn-caresheet" class="py-2 px-2 rounded-lg font-semibold text-forest-300 hover:text-white transition flex items-center justify-center gap-1">
-                        <i class="ph-fill ph-Scroll"></i> Care Card
+                    <button onclick="window.terraforge.switchAiTab('caresheet')" id="aiTabBtn-caresheet" class="py-2 px-2 rounded-xl font-semibold text-forest-300 hover:text-white transition flex items-center justify-center gap-1">
+                        <i class="ph-fill ph-scroll"></i> Care Card
                     </button>
-                    <button onclick="switchAiTab('audit')" id="aiTabBtn-audit" class="py-2 px-2 rounded-lg font-semibold text-forest-300 hover:text-white transition flex items-center justify-center gap-1">
+                    <button onclick="window.terraforge.switchAiTab('audit')" id="aiTabBtn-audit" class="py-2 px-2 rounded-xl font-semibold text-forest-300 hover:text-white transition flex items-center justify-center gap-1">
                         <i class="ph-fill ph-shield-check"></i> Bio-Doctor
                     </button>
                 </div>
 
-                <!-- Custom Seller Note / Niche Tone Input -->
+                <!-- Prompt Helper Chips -->
+                <div class="flex flex-wrap gap-1 text-[10px] text-forest-300">
+                    <span class="text-forest-400 font-mono py-0.5">Quick Tone:</span>
+                    <button onclick="window.terraforge.appendToneTag('Zen Desk Sanctuary')" class="px-2 py-0.5 rounded-lg bg-forest-900 hover:bg-forest-800 border border-forest-800 hover:border-terracotta-500/40 transition">Zen Desk</button>
+                    <button onclick="window.terraforge.appendToneTag('Artisan Luxury Centerpiece')" class="px-2 py-0.5 rounded-lg bg-forest-900 hover:bg-forest-800 border border-forest-800 hover:border-terracotta-500/40 transition">Luxury Craft</button>
+                    <button onclick="window.terraforge.appendToneTag('Witchy Victorian Apothecary')" class="px-2 py-0.5 rounded-lg bg-forest-900 hover:bg-forest-800 border border-forest-800 hover:border-terracotta-500/40 transition">Victorian Vibe</button>
+                </div>
+
+                <!-- Custom Note Input & Generate Trigger -->
                 <div class="flex gap-2">
-                    <input id="customAiToneInput" type="text" placeholder="Optional: e.g. 'Gift for desk worker', 'Witchy apothecary vibe'..." class="flex-1 bg-forest-950/90 border border-forest-700/80 rounded-xl px-3 py-2 text-xs text-parchment-100 placeholder-forest-500 focus:outline-none focus:border-terracotta-500">
-                    <button id="generateAiBtn" onclick="runAiGenerator()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-forest-600 hover:from-emerald-500 hover:to-forest-500 text-white font-semibold text-xs flex items-center gap-1.5 shrink-0 shadow-md transition">
+                    <input id="customAiToneInput" type="text" placeholder="e.g. 'Gift for software engineer', 'Witchy herbarium'..." class="flex-1 bg-forest-950/90 border border-forest-700/80 rounded-2xl px-3.5 py-2.5 text-xs text-parchment-100 placeholder-forest-500 focus:outline-none focus:border-terracotta-500 shadow-inner">
+                    <button id="generateAiBtn" onclick="window.terraforge.runAiGenerator()" class="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-forest-600 hover:from-emerald-500 hover:to-forest-500 text-white font-semibold text-xs flex items-center gap-1.5 shrink-0 shadow-md transition">
                         <i class="ph-bold ph-magic-wand"></i>
                         <span id="generateAiBtnText">Generate</span>
                     </button>
                 </div>
 
-                <!-- Local Open-Weight Telemetry Drawer -->
-                <div class="bg-forest-950/90 border border-forest-800/90 rounded-xl px-3 py-2 flex items-center justify-between text-[11px] font-mono text-forest-300">
+                <!-- Zero-Cloud Privacy Guarantee -->
+                <div class="bg-forest-950/90 border border-forest-800/90 rounded-2xl px-3 py-2 flex items-center justify-between text-[11px] font-mono text-forest-300 shadow-sm">
                     <span class="flex items-center gap-1.5">
                         <i class="ph-fill ph-lock-key text-emerald-400"></i>
                         <span>Wholesale margins stay local</span>
@@ -558,1607 +518,103 @@
                     <span id="inferenceLatencyStat" class="text-emerald-400">Ready • 0.00¢/req</span>
                 </div>
 
-                <!-- AI Output Container -->
-                <div id="aiOutputContainer" class="flex-1 bg-forest-950/60 border border-forest-800 rounded-xl p-3.5 overflow-y-auto max-h-[360px] flex flex-col justify-between gap-3">
-                    <!-- Dynamic Content populated by JS / Gemini API -->
+                <!-- AI Output Display -->
+                <div id="aiOutputContainer" class="flex-1 bg-forest-950/60 border border-forest-800 rounded-2xl p-4 overflow-y-auto max-h-[360px] flex flex-col justify-between gap-3 shadow-inner">
+                    <!-- Populated dynamically by ai-copilot.js -->
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- MODAL: Open-Source AI Challenge Submission & Local Ollama Architecture -->
+    <!-- MODAL: Open-Source AI Challenge Submission & Architecture -->
     <div id="challengeModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="glass-panel max-w-4xl w-full max-h-[90vh] rounded-3xl border border-forest-600 shadow-2xl flex flex-col overflow-hidden">
-            <!-- Modal Header -->
+            
             <div class="px-6 py-4 bg-forest-900/90 border-b border-forest-700 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-terracotta-500/20 border border-terracotta-500/40 flex items-center justify-center text-terracotta-400">
                         <i class="ph-bold ph-terminal-window text-xl"></i>
                     </div>
                     <div>
-                        <h2 class="font-serif font-bold text-lg text-parchment-50">Open-Source AI "Side Hustle" Challenge Hub</h2>
-                        <p class="text-xs text-forest-300">Why Local Open-Weight Models Make Micro-Botanical Businesses Profitable & Private</p>
+                        <h2 class="font-serif font-bold text-lg text-parchment-50">Open-Source AI Challenge Hub</h2>
+                        <p class="text-xs text-forest-300">Why Local Open-Weight Models Democratize Botanical Micro-Businesses</p>
                     </div>
                 </div>
-                <button onclick="closeModal('challengeModal')" class="p-2 rounded-xl bg-forest-800 hover:bg-forest-700 text-forest-200">
+                <button onclick="window.terraforge.closeModal('challengeModal')" class="p-2 rounded-xl bg-forest-800 hover:bg-forest-700 text-forest-200 transition">
                     <i class="ph-bold ph-x"></i>
                 </button>
             </div>
 
-            <!-- Modal Body -->
             <div class="p-6 overflow-y-auto space-y-6 text-sm">
-                <!-- Why Open Innovation Matters Grid -->
+                <!-- Three Pillars Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="p-4 rounded-2xl bg-forest-950/90 border border-forest-800">
                         <div class="text-emerald-400 font-mono text-xs uppercase font-semibold mb-1 flex items-center gap-1.5">
-                            <i class="ph-fill ph-shield-check"></i> 1. Supplier & Margin Privacy
+                            <i class="ph-fill ph-shield-check"></i> 1. Supplier Privacy
                         </div>
                         <p class="text-xs text-forest-200 leading-relaxed">
-                            Boutique terrarium builders source rare wholesale bryophytes, tissue-culture plants, and glassware. Running inference locally via <code class="text-amber-300">Ollama</code> keeps exact COGS, wholesale vendor lists, and profit markups on the maker's laptop—never sent to a third-party SaaS server.
+                            Boutique terrarium builders source rare bryophytes and glassware. Running inference locally on <code class="text-amber-300">Ollama</code> keeps exact BOMs, supplier lists, and profit margins safely on the maker's laptop.
                         </p>
                     </div>
                     <div class="p-4 rounded-2xl bg-forest-950/90 border border-forest-800">
                         <div class="text-terracotta-400 font-mono text-xs uppercase font-semibold mb-1 flex items-center gap-1.5">
-                            <i class="ph-fill ph-coins"></i> 2. Zero Marginal Cost at Farmers Markets
+                            <i class="ph-fill ph-coins"></i> 2. Zero Marginal Cost
                         </div>
                         <p class="text-xs text-forest-200 leading-relaxed">
-                            Sellers frequently operate in basements, greenhouses, or weekend pop-up markets without reliable Wi-Fi. An open-weight <code class="text-amber-300">Llama-3.2-3B</code> or <code class="text-amber-300">Qwen-2.5-7B</code> quantized model runs offline at $0/month, protecting razor-thin craft margins from $29/mo SaaS subscriptions.
+                            Sellers operate in greenhouses or outdoor markets without reliable Wi-Fi. An open-weight <code class="text-amber-300">Llama-3.2</code> or <code class="text-amber-300">Qwen-2.5</code> model runs offline at $0/month, protecting craft margins.
                         </p>
                     </div>
                     <div class="p-4 rounded-2xl bg-forest-950/90 border border-forest-800">
                         <div class="text-sky-400 font-mono text-xs uppercase font-semibold mb-1 flex items-center gap-1.5">
-                            <i class="ph-fill ph-sliders"></i> 3. Botanical LoRA Fine-Tuning
+                            <i class="ph-fill ph-sliders"></i> 3. Biological Guardrails
                         </div>
                         <p class="text-xs text-forest-200 leading-relaxed">
-                            General-purpose closed APIs often hallucinate plant care (e.g., recommending misting desert succulents inside sealed glass). Open weights let us enforce a deterministic JSON schema + botanical compatibility constraints before generating care cards.
+                            General LLMs hallucinate plant care (e.g. sealing desert succulents in 90% humidity glass). We enforce a deterministic biological engine before passing parameters to the model schema.
                         </p>
                     </div>
                 </div>
 
-                <!-- Local Ollama / Open-Source Agent Harness Config -->
+                <!-- Ollama Localhost Configuration -->
                 <div class="bg-forest-950 rounded-2xl p-4 border border-forest-800">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <span class="font-mono text-xs text-emerald-300 font-semibold flex items-center gap-2">
-                            <i class="ph-bold ph-plugs-connected"></i> Local Ollama Endpoint Bridge (Optional Live Localhost Connection)
+                            <i class="ph-bold ph-plugs-connected"></i> Local Ollama Connection Bridge
                         </span>
-                        <span class="text-[11px] font-mono text-forest-400">Default fallback: Gemini 3 Flash Preview + Deterministic Bio-Rule Harness</span>
+                        <span class="text-[11px] font-mono text-forest-400">Endpoint: http://localhost:11434</span>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2">
                         <input id="ollamaUrlInput" type="text" value="http://localhost:11434/api/generate" class="flex-1 bg-forest-900 border border-forest-700 rounded-xl px-3 py-2 text-xs font-mono text-parchment-100">
                         <input id="ollamaModelNameInput" type="text" value="llama3.2:3b" class="sm:w-44 bg-forest-900 border border-forest-700 rounded-xl px-3 py-2 text-xs font-mono text-parchment-100">
-                        <button onclick="testOllamaConnection()" class="px-4 py-2 rounded-xl bg-forest-700 hover:bg-forest-600 text-xs font-mono font-semibold text-white transition">
-                            Ping Local Ollama
+                        <button onclick="window.terraforge.testOllamaConnection()" class="px-4 py-2 rounded-xl bg-forest-700 hover:bg-forest-600 text-xs font-mono font-semibold text-white transition">
+                            Ping Ollama
                         </button>
                     </div>
                     <p id="ollamaPingStatus" class="text-[11px] font-mono text-forest-400 mt-2">
-                        Tip: Run <code class="text-emerald-300">OLLAMA_ORIGINS="*" ollama serve</code> locally to route requests directly to your GPU, or use the built-in hybrid AI engine right in this browser preview.
+                        Tip: Launch with <code class="text-emerald-300">OLLAMA_ORIGINS="*" ollama serve</code> to accept browser requests, or use the instant offline engine built into this studio.
                     </p>
                 </div>
 
-                <!-- Ready-to-Copy Challenge Submission Post -->
+                <!-- Submission Markdown Copy Box -->
                 <div class="space-y-2">
                     <div class="flex items-center justify-between">
-                        <h3 class="font-serif font-semibold text-base text-parchment-100">Ready-to-Publish Challenge Post (Markdown + DevRelay Spec)</h3>
-                        <button onclick="copySubmissionMarkdown()" class="px-3 py-1.5 rounded-xl bg-terracotta-600 hover:bg-terracotta-500 text-white text-xs font-semibold flex items-center gap-1.5 transition">
-                            <i class="ph-bold ph-copy"></i> Copy Full Submission Post
+                        <h3 class="font-serif font-semibold text-base text-parchment-100">Challenge Post (Markdown)</h3>
+                        <button onclick="window.terraforge.copySubmissionMarkdown()" class="px-3.5 py-1.5 rounded-xl bg-terracotta-600 hover:bg-terracotta-500 text-white text-xs font-semibold flex items-center gap-1.5 transition">
+                            <i class="ph-bold ph-copy"></i> Copy Post
                         </button>
                     </div>
-                    <textarea id="submissionMarkdownBox" readonly rows="10" class="w-full bg-forest-950 border border-forest-800 rounded-2xl p-4 font-mono text-xs text-forest-200 focus:outline-none"></textarea>
+                    <textarea id="submissionMarkdownBox" readonly rows="8" class="w-full bg-forest-950 border border-forest-800 rounded-2xl p-4 font-mono text-xs text-forest-200 focus:outline-none"></textarea>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- Animated Toast Notification -->
     <div id="toastNotification" class="fixed bottom-5 right-5 z-50 px-4 py-3 rounded-2xl bg-forest-900 border border-terracotta-500/60 text-parchment-50 text-xs font-medium shadow-2xl flex items-center gap-2.5 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <i class="ph-fill ph-check-circle text-emerald-400 text-lg"></i>
         <span id="toastMessage">Action completed!</span>
     </div>
 
-    <script>
-        /*************************************************************************
-         * 1. TERRARIUM STUDIO DATA CATALOG (VESSELS, SUBSTRATES, FLORA & FAUNA)
-         *************************************************************************/
-        const VESSELS = [
-            {
-                id: 'wardian',
-                name: 'Geometric Wardian Case',
-                subtitle: 'Faceted leaded-glass prism',
-                wholesaleCost: 22.00,
-                humidityRetention: 88,
-                clipId: 'clip-wardian',
-                baseY: 485,
-                topY: 70
-            },
-            {
-                id: 'apothecary',
-                name: 'Victorian Apothecary Jar',
-                subtitle: 'Heavy bell-curved glass dome',
-                wholesaleCost: 18.00,
-                humidityRetention: 92,
-                clipId: 'clip-apothecary',
-                baseY: 485,
-                topY: 85
-            },
-            {
-                id: 'flask',
-                name: 'Erlenmeyer Bio-Flask (2000ml)',
-                subtitle: 'Borosilicate narrow-neck laboratory vessel',
-                wholesaleCost: 19.50,
-                humidityRetention: 95,
-                clipId: 'clip-flask',
-                baseY: 485,
-                topY: 70
-            },
-            {
-                id: 'globe',
-                name: 'Wide Botanical Bowl',
-                subtitle: 'Open-mouth crystal sphere',
-                wholesaleCost: 14.50,
-                humidityRetention: 65,
-                clipId: 'clip-globe',
-                baseY: 485,
-                topY: 105
-            },
-            {
-                id: 'cylinder',
-                name: 'Modern Gallery Cylinder',
-                subtitle: 'Tall seamless museum column',
-                wholesaleCost: 16.50,
-                humidityRetention: 84,
-                clipId: 'clip-cylinder',
-                baseY: 485,
-                topY: 75
-            }
-        ];
-
-        const SUBSTRATE_DEFS = [
-            {
-                id: 'leca',
-                name: 'Expanded Clay (LECA) Drainage',
-                role: 'False bottom water reservoir',
-                pattern: 'url(#pat-leca)',
-                stroke: '#6b4423',
-                costPerMm: 0.08,
-                minMm: 0,
-                maxMm: 50
-            },
-            {
-                id: 'charcoal',
-                name: 'Activated Horticultural Charcoal',
-                role: 'Filtration & anti-fungal toxin trap',
-                pattern: 'url(#pat-charcoal)',
-                stroke: '#111314',
-                costPerMm: 0.14,
-                minMm: 0,
-                maxMm: 25
-            },
-            {
-                id: 'sphagnum',
-                name: 'Long-Fiber Sphagnum Barrier',
-                role: 'Prevents soil sifting into drainage',
-                pattern: 'url(#pat-sphagnum)',
-                stroke: '#8a794d',
-                costPerMm: 0.10,
-                minMm: 0,
-                maxMm: 25
-            },
-            {
-                id: 'soil',
-                name: 'ABG Bio-Active Tropical Mix',
-                role: 'Coco coir, tree fern fiber, orchid bark & worm castings',
-                pattern: 'url(#pat-soil)',
-                stroke: '#2b1d14',
-                costPerMm: 0.11,
-                minMm: 10,
-                maxMm: 70
-            },
-            {
-                id: 'sand',
-                name: 'Decorative Silica Top-Dress',
-                role: 'Aesthetic geological accent layer',
-                pattern: 'url(#pat-sand)',
-                stroke: '#bfa57a',
-                costPerMm: 0.07,
-                minMm: 0,
-                maxMm: 25
-            }
-        ];
-
-        const BIOME_CATALOG = [
-            {
-                id: 'fittonia-pink',
-                name: 'Pink Angel Fittonia',
-                latin: 'Fittonia albivenis',
-                category: 'plant',
-                biome: 'tropical',
-                idealHumidity: [70, 98],
-                idealLight: [35, 75],
-                wholesaleCost: 4.25,
-                emoji: '🌺',
-                description: 'Striking pink-veined nerve plant; thrives in sealed humid glass.'
-            },
-            {
-                id: 'cushion-moss',
-                name: 'Pillow Cushion Moss',
-                latin: 'Leucobryum glaucum',
-                category: 'plant',
-                biome: 'tropical',
-                idealHumidity: [72, 99],
-                idealLight: [25, 75],
-                wholesaleCost: 3.00,
-                emoji: '🟢',
-                description: 'Lush velvety mounds that regulate micro-humidity.'
-            },
-            {
-                id: 'maidenhair-fern',
-                name: 'Dwarf Maidenhair Fern',
-                latin: 'Adiantum raddianum',
-                category: 'plant',
-                biome: 'tropical',
-                idealHumidity: [75, 98],
-                idealLight: [35, 70],
-                wholesaleCost: 5.50,
-                emoji: '🌿',
-                description: 'Delicate cascading fronds on dark wiry stems.'
-            },
-            {
-                id: 'peperomia-caperata',
-                name: 'Emerald Ripple Peperomia',
-                latin: 'Peperomia caperata',
-                category: 'plant',
-                biome: 'tropical',
-                idealHumidity: [60, 90],
-                idealLight: [40, 80],
-                wholesaleCost: 4.75,
-                emoji: '🌱',
-                description: 'Deeply corrugated foliage with burgundy undersides.'
-            },
-            {
-                id: 'Marcgravia',
-                name: 'Shingle Climbing Vine',
-                latin: 'Marcgravia rectiflora',
-                category: 'plant',
-                biome: 'tropical',
-                idealHumidity: [75, 99],
-                idealLight: [30, 75],
-                wholesaleCost: 7.50,
-                emoji: '🍃',
-                description: 'Collector epiphyte that climbs driftwood & stone.'
-            },
-            {
-                id: 'echeveria-arid',
-                name: 'Desert Rosette Succulent',
-                latin: 'Echeveria elegans',
-                category: 'plant',
-                biome: 'arid',
-                idealHumidity: [15, 48],
-                idealLight: [70, 100],
-                wholesaleCost: 3.75,
-                emoji: '🌵',
-                description: 'Arid succulent. WARNING: Rots quickly in closed humid vessels!'
-            },
-            {
-                id: 'seiryu-stone',
-                name: 'Mini Seiryu Dragon Stone',
-                latin: 'Calcite veined limestone',
-                category: 'hardscape',
-                biome: 'neutral',
-                idealHumidity: [0, 100],
-                idealLight: [0, 100],
-                wholesaleCost: 4.50,
-                emoji: '🪨',
-                description: 'Dramatic craggy iwagumi mountain stone.'
-            },
-            {
-                id: 'spider-driftwood',
-                name: 'Twisted Azalea Driftwood',
-                latin: 'Rhododendron rootwood',
-                category: 'hardscape',
-                biome: 'neutral',
-                idealHumidity: [0, 100],
-                idealLight: [0, 100],
-                wholesaleCost: 5.25,
-                emoji: '🪵',
-                description: 'Sculptural aged branch for epiphytes and moss.'
-            },
-            {
-                id: 'springtails',
-                name: 'Temperate White Springtails',
-                latin: 'Folsomia candida (Colony)',
-                category: 'fauna',
-                biome: 'tropical',
-                idealHumidity: [65, 99],
-                idealLight: [0, 100],
-                wholesaleCost: 3.50,
-                emoji: '🐜',
-                description: 'Essential micro-fauna clean-up crew that consumes mold.'
-            },
-            {
-                id: 'dwarf-isopods',
-                name: 'Rubber Ducky Isopods (x5)',
-                latin: 'Cubaris sp.',
-                category: 'fauna',
-                biome: 'tropical',
-                idealHumidity: [70, 95],
-                idealLight: [0, 90],
-                wholesaleCost: 9.00,
-                emoji: '🐞',
-                description: 'Adorable detritivores that cycle decaying leaves into plant nutrients.'
-            }
-        ];
-
-        /*************************************************************************
-         * 2. APPLICATION STATE
-         *************************************************************************/
-        let state = {
-            vesselId: 'wardian',
-            isSealedLid: true,
-            lightLevel: 65,
-            substrates: {
-                leca: 24,
-                charcoal: 10,
-                sphagnum: 8,
-                soil: 36,
-                sand: 6
-            },
-            placedItems: [],
-            selectedInstanceId: null,
-            catalogFilter: 'all',
-            laborCost: 16,
-            retailMarkup: 2.2,
-            aiEngineMode: 'ollama', // 'ollama' or 'webgpu'
-            activeAiTab: 'listing',
-            lastBioReport: {
-                score: 96,
-                effectiveHumidity: 84,
-                statusText: 'Self-Sustaining Loop',
-                warnings: [],
-                strengths: []
-            }
-        };
-
-        let dragState = {
-            isDragging: false,
-            instanceId: null,
-            offsetX: 0,
-            offsetY: 0
-        };
-
-        /*************************************************************************
-         * 3. SVG SPECIMEN VECTOR ART RENDERERS
-         *************************************************************************/
-        function getSpecimenSvgMarkup(specId) {
-            switch (specId) {
-                case 'fittonia-pink':
-                    return `
-                        <g>
-                            <!-- Stems -->
-                            <path d="M0,0 Q-8,-18 -22,-32 M0,0 Q4,-22 18,-36 M0,0 Q0,-25 0,-46" stroke="#2d5546" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <!-- Left Leaf -->
-                            <g transform="translate(-22,-32) rotate(-28)">
-                                <ellipse cx="0" cy="0" rx="18" ry="12" fill="#1e4631" stroke="#386a56" stroke-width="1"/>
-                                <path d="M-15,0 L15,0 M-6,0 L-11,-7 M-6,0 L-11,7 M2,0 L-3,-9 M2,0 L-3,9 M9,0 L5,-6 M9,0 L5,6" stroke="#f472b6" stroke-width="1.6" stroke-linecap="round"/>
-                            </g>
-                            <!-- Right Leaf -->
-                            <g transform="translate(20,-34) rotate(25)">
-                                <ellipse cx="0" cy="0" rx="17" ry="11" fill="#1e4631" stroke="#386a56" stroke-width="1"/>
-                                <path d="M-14,0 L14,0 M-5,0 L-9,-6 M-5,0 L-9,6 M3,0 L-2,-8 M3,0 L-2,8" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round"/>
-                            </g>
-                            <!-- Center Top Leaf -->
-                            <g transform="translate(0,-48) rotate(-5)">
-                                <ellipse cx="0" cy="0" rx="14" ry="20" fill="#23533a" stroke="#4c856e" stroke-width="1"/>
-                                <path d="M0,16 L0,-16 M0,6 L-8,1 M0,6 L8,1 M0,-3 L-9,-8 M0,-3 L9,-8 M0,-10 L-5,-14 M0,-10 L5,-14" stroke="#fb7185" stroke-width="1.7" stroke-linecap="round"/>
-                            </g>
-                        </g>
-                    `;
-                case 'cushion-moss':
-                    return `
-                        <g>
-                            <path d="M-38,4 C-40,-18 -18,-28 0,-26 C20,-28 40,-16 38,4 Z" fill="#3f7d20" />
-                            <path d="M-28,4 C-26,-12 -10,-20 6,-18 C22,-18 32,-8 30,4 Z" fill="#539e2b" />
-                            <circle cx="-14" cy="-10" r="7" fill="#68b836" opacity="0.7"/>
-                            <circle cx="8" cy="-12" r="9" fill="#72c83d" opacity="0.6"/>
-                            <circle cx="20" cy="-6" r="6" fill="#68b836" opacity="0.7"/>
-                        </g>
-                    `;
-                case 'maidenhair-fern':
-                    return `
-                        <g>
-                            <!-- Dark wiry stems -->
-                            <path d="M0,0 Q-18,-35 -42,-58 M0,0 Q0,-45 -8,-76 M0,0 Q20,-38 44,-52" stroke="#1f1610" stroke-width="1.8" fill="none"/>
-                            <!-- Frond leaflets -->
-                            <circle cx="-16" cy="-26" r="6" fill="#4ade80" opacity="0.9"/>
-                            <circle cx="-28" cy="-42" r="6.5" fill="#22c55e" opacity="0.9"/>
-                            <circle cx="-40" cy="-55" r="5.5" fill="#4ade80" opacity="0.9"/>
-                            <circle cx="-4" cy="-35" r="6.5" fill="#22c55e" opacity="0.95"/>
-                            <circle cx="-12" cy="-52" r="7" fill="#4ade80" opacity="0.9"/>
-                            <circle cx="4" cy="-62" r="6" fill="#16a34a" opacity="0.9"/>
-                            <circle cx="-8" cy="-75" r="5" fill="#4ade80" opacity="0.9"/>
-                            <circle cx="16" cy="-28" r="6" fill="#22c55e" opacity="0.9"/>
-                            <circle cx="29" cy="-41" r="6.5" fill="#4ade80" opacity="0.9"/>
-                            <circle cx="42" cy="-51" r="5.5" fill="#22c55e" opacity="0.9"/>
-                        </g>
-                    `;
-                case 'peperomia-caperata':
-                    return `
-                        <g>
-                            <path d="M-4,0 L-18,-26 M0,0 L0,-36 M4,0 L19,-24" stroke="#7f1d1d" stroke-width="3.2" stroke-linecap="round"/>
-                            <!-- Heart-shaped corrugated leaves -->
-                            <path d="M-18,-22 C-32,-34 -30,-48 -18,-44 C-6,-48 -4,-34 -18,-22 Z" fill="#14532d" stroke="#052e16" stroke-width="1.5"/>
-                            <path d="M0,-30 C-16,-44 -14,-62 0,-56 C14,-62 16,-44 0,-30 Z" fill="#166534" stroke="#052e16" stroke-width="1.5"/>
-                            <path d="M18,-20 C4,-32 6,-46 18,-42 C30,-46 32,-32 18,-20 Z" fill="#15803d" stroke="#052e16" stroke-width="1.5"/>
-                        </g>
-                    `;
-                case 'Marcgravia':
-                    return `
-                        <g>
-                            <path d="M-20,5 Q-8,-20 5,-40 T22,-78" stroke="#5c4033" stroke-width="2.2" fill="none"/>
-                            <ellipse cx="-14" cy="-8" rx="8" ry="5" transform="rotate(-30 -14 -8)" fill="#2d6a4f" stroke="#52b788" stroke-width="0.8"/>
-                            <ellipse cx="-4" cy="-22" rx="8" ry="5" transform="rotate(-25 -4 -22)" fill="#40916c" stroke="#74c69d" stroke-width="0.8"/>
-                            <ellipse cx="6" cy="-38" rx="7.5" ry="4.8" transform="rotate(-20 6 -38)" fill="#2d6a4f" stroke="#52b788" stroke-width="0.8"/>
-                            <ellipse cx="14" cy="-55" rx="7" ry="4.5" transform="rotate(-15 14 -55)" fill="#52b788"/>
-                            <ellipse cx="20" cy="-70" rx="6" ry="4" transform="rotate(-10 20 -70)" fill="#74c69d"/>
-                        </g>
-                    `;
-                case 'echeveria-arid':
-                    return `
-                        <g transform="translate(0,-14)">
-                            <ellipse cx="-18" cy="4" rx="14" ry="7" transform="rotate(-15 -18 4)" fill="#5e8c76" stroke="#fca5a5" stroke-width="1"/>
-                            <ellipse cx="18" cy="4" rx="14" ry="7" transform="rotate(15 18 4)" fill="#5e8c76" stroke="#fca5a5" stroke-width="1"/>
-                            <ellipse cx="-12" cy="-6" rx="13" ry="7" transform="rotate(-35 -12 -6)" fill="#74a892" stroke="#fca5a5" stroke-width="1"/>
-                            <ellipse cx="12" cy="-6" rx="13" ry="7" transform="rotate(35 12 -6)" fill="#74a892" stroke="#fca5a5" stroke-width="1"/>
-                            <ellipse cx="0" cy="-12" rx="8" ry="14" fill="#8ec3b0" stroke="#fda4af" stroke-width="1.2"/>
-                            <circle cx="0" cy="-4" r="5" fill="#a7f3d0"/>
-                        </g>
-                    `;
-                case 'seiryu-stone':
-                    return `
-                        <g>
-                            <polygon points="-32,6 -24,-45 -4,-68 18,-52 34,6" fill="#475569" stroke="#1e293b" stroke-width="2"/>
-                            <polygon points="-4,-68 18,-52 28,6 4,6" fill="#334155"/>
-                            <!-- White calcite veins -->
-                            <path d="M-16,-35 L-2,-22 L6,-38 M-8,-10 L12,-24" stroke="#cbd5e1" stroke-width="1.8" fill="none" opacity="0.8"/>
-                        </g>
-                    `;
-                case 'spider-driftwood':
-                    return `
-                        <g>
-                            <path d="M-28,6 Q-10,-25 12,-48 Q28,-65 45,-72 M-4,-18 Q-22,-42 -36,-58 M8,-38 Q16,-60 12,-80" stroke="#6b4423" stroke-width="8" stroke-linecap="round" fill="none"/>
-                            <path d="M-26,6 Q-8,-25 14,-48 Q30,-65 45,-72" stroke="#8b5a2b" stroke-width="3" stroke-linecap="round" fill="none"/>
-                        </g>
-                    `;
-                case 'springtails':
-                    return `
-                        <g>
-                            <ellipse cx="-10" cy="-3" rx="3.5" ry="1.6" fill="#f8fafc"/>
-                            <ellipse cx="4" cy="-6" rx="3" ry="1.4" fill="#f8fafc"/>
-                            <ellipse cx="14" cy="-2" rx="3.5" ry="1.6" fill="#f8fafc"/>
-                        </g>
-                    `;
-                case 'dwarf-isopods':
-                    return `
-                        <g transform="translate(0,-5)">
-                            <ellipse cx="0" cy="0" rx="11" ry="6" fill="#334155" stroke="#1e293b" stroke-width="1"/>
-                            <ellipse cx="-6" cy="0" rx="4" ry="5" fill="#facc15"/>
-                            <ellipse cx="7" cy="0" rx="3.5" ry="4.5" fill="#facc15"/>
-                            <path d="M-11,-2 L-15,-5 M-11,2 L-15,5" stroke="#facc15" stroke-width="1.2"/>
-                        </g>
-                    `;
-                default:
-                    return `<circle cx="0" cy="-15" r="15" fill="#4ade80"/>`;
-            }
-        }
-
-        /*************************************************************************
-         * 4. RENDERING THE INTERACTIVE SVG TERRARIUM
-         *************************************************************************/
-        function renderTerrariumCanvas() {
-            const vessel = VESSELS.find(v => v.id === state.vesselId) || VESSELS[0];
-
-            // 1. Update ClipPath on the interior group
-            const clipGroup = document.getElementById('vesselInteriorClipGroup');
-            clipGroup.setAttribute('clip-path', `url(#${vessel.clipId})`);
-
-            // 2. Update Grow Light intensity
-            const lightRect = document.getElementById('svgGrowLightRect');
-            lightRect.setAttribute('opacity', (state.lightLevel / 100).toFixed(2));
-
-            // 3. Render Substrate Stratigraphy from bottom up
-            const subGroup = document.getElementById('substrateLayersSvgGroup');
-            subGroup.innerHTML = '';
-
-            let currentBottomY = vessel.baseY;
-            const scalePxPerMm = 1.65; // visual scale factor
-
-            SUBSTRATE_DEFS.forEach((sub) => {
-                const mm = state.substrates[sub.id] || 0;
-                if (mm <= 0) return;
-                const layerHeight = mm * scalePxPerMm;
-                const topY = currentBottomY - layerHeight;
-
-                // Create organic slightly curved top wave for each layer
-                const pathData = `
-                    M 50,${topY}
-                    Q 150,${topY + 4} 250,${topY - 2}
-                    T 450,${topY + 2}
-                    L 450,${currentBottomY + 4}
-                    L 50,${currentBottomY + 4}
-                    Z
-                `;
-                const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                pathEl.setAttribute('d', pathData);
-                pathEl.setAttribute('fill', sub.pattern);
-                pathEl.setAttribute('stroke', sub.stroke);
-                pathEl.setAttribute('stroke-width', '1');
-                subGroup.appendChild(pathEl);
-
-                // Label badge inside layer if thick enough
-                if (layerHeight >= 22) {
-                    const labelEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                    labelEl.setAttribute('x', '250');
-                    labelEl.setAttribute('y', String(topY + layerHeight / 2 + 4));
-                    labelEl.setAttribute('text-anchor', 'middle');
-                    labelEl.setAttribute('fill', 'rgba(255,255,255,0.55)');
-                    labelEl.setAttribute('font-size', '9');
-                    labelEl.setAttribute('font-family', 'JetBrains Mono, monospace');
-                    labelEl.textContent = `${sub.name.split(' ')[0].toUpperCase()} (${mm}mm)`;
-                    subGroup.appendChild(labelEl);
-                }
-
-                currentBottomY = topY;
-            });
-
-            // Save surface Y so newly added plants rest naturally on the top substrate
-            state.currentSoilSurfaceY = currentBottomY;
-
-            // 4. Render Placed Flora, Hardscape & Fauna
-            const itemsGroup = document.getElementById('placedItemsGroup');
-            itemsGroup.innerHTML = '';
-
-            state.placedItems.forEach((item) => {
-                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-                const flipScaleX = item.flipX ? -item.scale : item.scale;
-                g.setAttribute('transform', `translate(${item.x}, ${item.y}) rotate(${item.rotation}) scale(${flipScaleX}, ${item.scale})`);
-                g.setAttribute('class', `cursor-grab active:cursor-grabbing transition-filter ${state.selectedInstanceId === item.instanceId ? 'selected-item-ring' : ''}`);
-                g.dataset.instanceId = item.instanceId;
-
-                g.innerHTML = getSpecimenSvgMarkup(item.specId);
-
-                // Pointer Events for Dragging & Selecting
-                g.addEventListener('pointerdown', (e) => startDragItem(e, item.instanceId));
-                itemsGroup.appendChild(g);
-            });
-
-            // 5. Render Cork Lid if sealed
-            const lidGroup = document.getElementById('vesselLidSvgGroup');
-            lidGroup.innerHTML = '';
-            if (state.isSealedLid) {
-                lidGroup.innerHTML = getVesselLidSvg(vessel.id);
-            }
-
-            // 6. Render Glass Vessel Frame & Specular Highlights
-            const outlineGroup = document.getElementById('vesselGlassOutlineGroup');
-            outlineGroup.innerHTML = getVesselGlassOutlineSvg(vessel.id);
-
-            // 7. Update Bio-Compatibility & Economics
-            evaluateBioCompatibility();
-            recalculateEconomics();
-        }
-
-        function getVesselLidSvg(vesselId) {
-            switch (vesselId) {
-                case 'wardian':
-                    return `<polygon points="146,56 354,56 350,72 150,72" fill="#b47b48" stroke="#784f2a" stroke-width="2"/>`;
-                case 'apothecary':
-                    return `
-                        <circle cx="250" cy="60" r="18" fill="#d9ecff" fill-opacity="0.45" stroke="#e2e8f0" stroke-width="2"/>
-                        <rect x="172" y="74" width="156" height="16" rx="6" fill="#b47b48" stroke="#784f2a" stroke-width="2"/>
-                    `;
-                case 'flask':
-                    return `<polygon points="205,50 295,50 288,82 212,82" fill="#b47b48" stroke="#784f2a" stroke-width="2"/>`;
-                case 'globe':
-                    return `<rect x="162" y="95" width="176" height="14" rx="5" fill="#b47b48" stroke="#784f2a" stroke-width="2"/>`;
-                case 'cylinder':
-                    return `<rect x="112" y="64" width="276" height="16" rx="6" fill="#b47b48" stroke="#784f2a" stroke-width="2"/>`;
-                default:
-                    return '';
-            }
-        }
-
-        function getVesselGlassOutlineSvg(vesselId) {
-            switch (vesselId) {
-                case 'wardian':
-                    return `
-                        <polygon points="150,70 350,70 430,190 390,485 110,485 70,190" fill="url(#glassSheen)" stroke="#b4916c" stroke-width="4" stroke-linejoin="round"/>
-                        <!-- Interior solder lines -->
-                        <line x1="150" y1="70" x2="190" y2="190" stroke="#b4916c" stroke-width="2.5" opacity="0.8"/>
-                        <line x1="350" y1="70" x2="310" y2="190" stroke="#b4916c" stroke-width="2.5" opacity="0.8"/>
-                        <line x1="70" y1="190" x2="430" y2="190" stroke="#b4916c" stroke-width="3" opacity="0.85"/>
-                        <line x1="190" y1="190" x2="175" y2="485" stroke="#b4916c" stroke-width="2.5" opacity="0.75"/>
-                        <line x1="310" y1="190" x2="325" y2="485" stroke="#b4916c" stroke-width="2.5" opacity="0.75"/>
-                    `;
-                case 'apothecary':
-                    return `
-                        <path d="M 175,85 L 325,85 L 325,120 C 395,145 415,220 415,320 C 415,435 375,485 250,485 C 125,485 85,435 85,320 C 85,220 105,145 175,120 Z" fill="url(#glassSheen)" stroke="#d1fae5" stroke-opacity="0.65" stroke-width="3.5"/>
-                        <path d="M 115,220 C 102,280 105,360 125,420" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round" fill="none"/>
-                    `;
-                case 'flask':
-                    return `
-                        <path d="M 210,70 L 290,70 L 290,175 L 420,425 C 435,455 415,485 370,485 L 130,485 C 85,485 65,455 80,425 L 210,175 Z" fill="url(#glassSheen)" stroke="#d1fae5" stroke-opacity="0.7" stroke-width="3.5"/>
-                        <!-- Lab volume markings -->
-                        <g stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.5" font-family="JetBrains Mono" font-size="9" fill="#ffffff" fill-opacity="0.5">
-                            <line x1="310" y1="280" x2="330" y2="280"/><text x="335" y="283" stroke="none">1500ml</text>
-                            <line x1="335" y1="340" x2="355" y2="340"/><text x="360" y="343" stroke="none">1000ml</text>
-                            <line x1="360" y1="400" x2="380" y2="400"/><text x="385" y="403" stroke="none">500ml</text>
-                        </g>
-                    `;
-                case 'globe':
-                    return `
-                        <path d="M 165,105 L 335,105 C 415,165 435,285 405,390 C 380,460 325,485 250,485 C 175,485 120,460 95,390 C 65,285 85,165 165,105 Z" fill="url(#glassSheen)" stroke="#d1fae5" stroke-opacity="0.65" stroke-width="3.5"/>
-                        <path d="M 110,210 C 92,275 98,350 125,405" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round" fill="none"/>
-                    `;
-                case 'cylinder':
-                    return `
-                        <rect x="115" y="75" width="270" height="410" rx="28" fill="url(#glassSheen)" stroke="#d1fae5" stroke-opacity="0.65" stroke-width="3.5"/>
-                        <line x1="135" y1="115" x2="135" y2="440" stroke="#ffffff" stroke-opacity="0.32" stroke-width="5" stroke-linecap="round"/>
-                    `;
-                default:
-                    return '';
-            }
-        }
-
-        /*************************************************************************
-         * 5. DRAG AND DROP & SPECIMEN TRANSFORMS ON SVG CANVAS
-         *************************************************************************/
-        function getSvgCoords(evt) {
-            const svg = document.getElementById('terrariumSvg');
-            const pt = svg.createSVGPoint();
-            pt.x = evt.clientX;
-            pt.y = evt.clientY;
-            const transformed = pt.matrixTransform(svg.getScreenCTM().inverse());
-            return { x: transformed.x, y: transformed.y };
-        }
-
-        function startDragItem(evt, instanceId) {
-            evt.stopPropagation();
-            selectPlacedItem(instanceId);
-            const item = state.placedItems.find(i => i.instanceId === instanceId);
-            if (!item) return;
-
-            const coords = getSvgCoords(evt);
-            dragState.isDragging = true;
-            dragState.instanceId = instanceId;
-            dragState.offsetX = coords.x - item.x;
-            dragState.offsetY = coords.y - item.y;
-        }
-
-        window.addEventListener('pointermove', (evt) => {
-            if (!dragState.isDragging || !dragState.instanceId) return;
-            const item = state.placedItems.find(i => i.instanceId === dragState.instanceId);
-            if (!item) return;
-
-            const coords = getSvgCoords(evt);
-            item.x = Math.max(95, Math.min(405, Math.round(coords.x - dragState.offsetX)));
-            item.y = Math.max(120, Math.min(465, Math.round(coords.y - dragState.offsetY)));
-            renderTerrariumCanvas();
-        });
-
-        window.addEventListener('pointerup', () => {
-            dragState.isDragging = false;
-            dragState.instanceId = null;
-        });
-
-        function addSpecimenToTerrarium(specId) {
-            const spec = BIOME_CATALOG.find(s => s.id === specId);
-            if (!spec) return;
-
-            const surfaceY = state.currentSoilSurfaceY || 350;
-            const randomX = Math.round(180 + Math.random() * 140);
-            const newInstance = {
-                instanceId: 'inst_' + Date.now() + '_' + Math.floor(Math.random() * 999),
-                specId: spec.id,
-                x: randomX,
-                y: surfaceY + 4,
-                scale: 1.0,
-                rotation: 0,
-                flipX: false
-            };
-
-            state.placedItems.push(newInstance);
-            selectPlacedItem(newInstance.instanceId);
-            renderTerrariumCanvas();
-            showToast(`Planted ${spec.name} into vessel`);
-        }
-
-        function selectPlacedItem(instanceId) {
-            state.selectedInstanceId = instanceId;
-            const panel = document.getElementById('itemInspectorPanel');
-            const item = state.placedItems.find(i => i.instanceId === instanceId);
-
-            if (!item) {
-                panel.classList.add('hidden');
-                panel.classList.remove('flex');
-                return;
-            }
-
-            const spec = BIOME_CATALOG.find(s => s.id === item.specId);
-            panel.classList.remove('hidden');
-            panel.classList.add('flex');
-
-            document.getElementById('inspectorEmoji').textContent = spec.emoji;
-            document.getElementById('inspectorName').textContent = spec.name;
-            document.getElementById('inspectorLatin').textContent = spec.latin;
-            document.getElementById('inspectorScale').value = item.scale;
-            document.getElementById('inspectorScaleVal').textContent = item.scale.toFixed(2) + 'x';
-            document.getElementById('inspectorRot').value = item.rotation;
-            document.getElementById('inspectorRotVal').textContent = item.rotation + '°';
-        }
-
-        function updateSelectedItemTransform() {
-            const item = state.placedItems.find(i => i.instanceId === state.selectedInstanceId);
-            if (!item) return;
-            item.scale = parseFloat(document.getElementById('inspectorScale').value);
-            item.rotation = parseInt(document.getElementById('inspectorRot').value, 10);
-            document.getElementById('inspectorScaleVal').textContent = item.scale.toFixed(2) + 'x';
-            document.getElementById('inspectorRotVal').textContent = item.rotation + '°';
-            renderTerrariumCanvas();
-        }
-
-        function flipSelectedItem() {
-            const item = state.placedItems.find(i => i.instanceId === state.selectedInstanceId);
-            if (!item) return;
-            item.flipX = !item.flipX;
-            renderTerrariumCanvas();
-        }
-
-        function changeSelectedItemLayer(dir) {
-            const idx = state.placedItems.findIndex(i => i.instanceId === state.selectedInstanceId);
-            if (idx === -1) return;
-            const targetIdx = idx + dir;
-            if (targetIdx < 0 || targetIdx >= state.placedItems.length) return;
-            const temp = state.placedItems[idx];
-            state.placedItems[idx] = state.placedItems[targetIdx];
-            state.placedItems[targetIdx] = temp;
-            renderTerrariumCanvas();
-        }
-
-        function deleteSelectedItem() {
-            if (!state.selectedInstanceId) return;
-            state.placedItems = state.placedItems.filter(i => i.instanceId !== state.selectedInstanceId);
-            selectPlacedItem(null);
-            renderTerrariumCanvas();
-        }
-
-        /*************************************************************************
-         * 6. LIVE BIO-COMPATIBILITY & MICROCLIMATE SIMULATOR ENGINE
-         *************************************************************************/
-        function evaluateBioCompatibility() {
-            const vessel = VESSELS.find(v => v.id === state.vesselId) || VESSELS[0];
-            let effectiveHumidity = vessel.humidityRetention;
-            if (!state.isSealedLid) {
-                effectiveHumidity -= 28;
-            }
-            // Moss and sphagnum boost internal humidity slightly
-            if (state.substrates.sphagnum >= 6) effectiveHumidity += 4;
-            effectiveHumidity = Math.max(25, Math.min(99, effectiveHumidity));
-
-            // Update mist visibility
-            const mistGroup = document.getElementById('humidityMistGroup');
-            mistGroup.setAttribute('opacity', effectiveHumidity > 75 ? '0.7' : '0.15');
-
-            let score = 100;
-            const warnings = [];
-            const strengths = [];
-
-            // 1. Check Drainage + Charcoal health
-            if (state.isSealedLid && state.substrates.leca < 15) {
-                score -= 22;
-                warnings.push('⚠️ Low LECA drainage (<15mm) in a sealed vessel risks anaerobic root rot.');
-            } else if (state.substrates.leca >= 18 && state.substrates.charcoal >= 6) {
-                strengths.push('✅ Optimal false-bottom LECA & activated charcoal filtration cycle.');
-            }
-
-            if (state.isSealedLid && state.substrates.charcoal < 4) {
-                score -= 12;
-                warnings.push('⚠️ Missing activated charcoal layer in closed terrarium can cause sour odors.');
-            }
-
-            if (state.substrates.soil < 20) {
-                score -= 15;
-                warnings.push('⚠️ Soil depth (<20mm) is too shallow for stable root establishment.');
-            }
-
-            // 2. Check Specimen Biome Compatibility
-            const placedSpecs = state.placedItems.map(i => BIOME_CATALOG.find(b => b.id === i.specId)).filter(Boolean);
-            const hasTropical = placedSpecs.some(s => s.biome === 'tropical');
-            const hasArid = placedSpecs.some(s => s.biome === 'arid');
-            const hasFauna = placedSpecs.some(s => s.category === 'fauna');
-
-            if (hasTropical && hasArid) {
-                score -= 42;
-                warnings.push('🚨 BIOME CONFLICT: Arid Desert Succulent (Echeveria) mixed with high-humidity Tropical Flora! Succulents will rot rapidly.');
-            }
-
-            placedSpecs.forEach((spec) => {
-                if (spec.category === 'plant') {
-                    if (effectiveHumidity < spec.idealHumidity[0]) {
-                        score -= 14;
-                        warnings.push(`💧 ${spec.name} prefers ${spec.idealHumidity[0]}%+ RH (Current: ${effectiveHumidity}%). Consider closing the cork lid.`);
-                    } else if (effectiveHumidity > spec.idealHumidity[1]) {
-                        score -= 25;
-                        warnings.push(`💧 ${spec.name} will rot at ${effectiveHumidity}% RH (Needs open air <${spec.idealHumidity[1]}% RH).`);
-                    }
-                }
-            });
-
-            if (hasFauna && effectiveHumidity >= 68) {
-                strengths.push('🐞 Bio-active micro-fauna crew (Springtails/Isopods) actively suppresses mold.');
-            } else if (!hasFauna && state.isSealedLid) {
-                warnings.push('💡 Tip: Add Springtails to make this closed ecosystem 100% self-cleaning against fungal bloom.');
-            }
-
-            score = Math.max(12, Math.min(100, score));
-
-            // Update UI Badges
-            document.getElementById('telemetryHumidity').textContent = `${effectiveHumidity}% RH`;
-            document.getElementById('telemetryBioactive').textContent = hasFauna ? 'Bio-Active Crew' : 'Standard Botanical';
-
-            const scoreValEl = document.getElementById('bioScoreValue');
-            const scoreDotEl = document.getElementById('bioScoreIndicator');
-            const maintBadge = document.getElementById('maintenanceBadge');
-
-            scoreValEl.textContent = `${score}%`;
-
-            if (score >= 85) {
-                scoreValEl.className = 'font-mono font-bold text-sm text-emerald-400';
-                scoreDotEl.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
-                maintBadge.textContent = 'Thriving Microclimate';
-                maintBadge.className = 'text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
-            } else if (score >= 60) {
-                scoreValEl.className = 'font-mono font-bold text-sm text-amber-400';
-                scoreDotEl.className = 'w-2.5 h-2.5 rounded-full bg-amber-400';
-                maintBadge.textContent = 'Moderate Care Needed';
-                maintBadge.className = 'text-[11px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300';
-            } else {
-                scoreValEl.className = 'font-mono font-bold text-sm text-red-400';
-                scoreDotEl.className = 'w-2.5 h-2.5 rounded-full bg-red-500 animate-ping';
-                maintBadge.textContent = 'High Risk / Conflict';
-                maintBadge.className = 'text-[11px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-300';
-            }
-
-            const alertsContainer = document.getElementById('bioAlertsContainer');
-            const allMessages = [...warnings.slice(0, 2), ...strengths.slice(0, 2)];
-            if (allMessages.length === 0) {
-                alertsContainer.innerHTML = `<p class="text-forest-300">Add plants and hardscape from the Biome tab to simulate compatibility.</p>`;
-            } else {
-                alertsContainer.innerHTML = allMessages.map(m => `<p class="leading-snug">${m}</p>`).join('');
-            }
-
-            state.lastBioReport = {
-                score,
-                effectiveHumidity,
-                statusText: maintBadge.textContent,
-                warnings,
-                strengths
-            };
-        }
-
-        /*************************************************************************
-         * 7. COMMERCIAL COST & MARGIN ENGINE
-         *************************************************************************/
-        function recalculateEconomics() {
-            const vessel = VESSELS.find(v => v.id === state.vesselId) || VESSELS[0];
-            state.laborCost = parseFloat(document.getElementById('laborInput').value);
-            state.retailMarkup = parseFloat(document.getElementById('markupInput').value);
-
-            document.getElementById('laborValLabel').textContent = `$${state.laborCost}`;
-            document.getElementById('markupValLabel').textContent = `${state.retailMarkup.toFixed(1)}x`;
-            document.getElementById('vesselCostBadge').textContent = `$${vessel.wholesaleCost.toFixed(2)} wholesale`;
-
-            // Calculate Substrate Raw Cost
-            let subCost = 0;
-            SUBSTRATE_DEFS.forEach(s => {
-                subCost += (state.substrates[s.id] || 0) * s.costPerMm;
-            });
-
-            // Calculate Specimens Cost
-            let itemsCost = 0;
-            state.placedItems.forEach(item => {
-                const spec = BIOME_CATALOG.find(b => b.id === item.specId);
-                if (spec) itemsCost += spec.wholesaleCost;
-            });
-
-            const cogs = vessel.wholesaleCost + subCost + itemsCost;
-            const totalCost = cogs + state.laborCost;
-            const retailPrice = Math.round(totalCost * state.retailMarkup);
-            const netProfit = retailPrice - totalCost;
-            const marginPct = retailPrice > 0 ? Math.round((netProfit / retailPrice) * 100) : 0;
-
-            document.getElementById('econCogs').textContent = `$${cogs.toFixed(2)}`;
-            document.getElementById('econLabor').textContent = `$${state.laborCost.toFixed(2)}`;
-            document.getElementById('econRetail').textContent = `$${retailPrice.toFixed(2)}`;
-            document.getElementById('econProfit').textContent = `+$${netProfit.toFixed(0)} (${marginPct}%)`;
-
-            state.economics = {
-                cogs: cogs.toFixed(2),
-                labor: state.laborCost.toFixed(2),
-                retailPrice: retailPrice.toFixed(2),
-                netProfit: netProfit.toFixed(2),
-                marginPct
-            };
-        }
-
-        /*************************************************************************
-         * 8. INITIALIZE UI CONTROLS & PRESETS
-         *************************************************************************/
-        function initUIControls() {
-            // 1. Populate Vessel List
-            const vesselList = document.getElementById('vesselSelectorList');
-            vesselList.innerHTML = VESSELS.map(v => `
-                <button onclick="selectVessel('${v.id}')" id="vesselBtn-${v.id}" class="w-full text-left p-2.5 rounded-xl border transition flex items-center justify-between ${state.vesselId === v.id ? 'bg-forest-800 border-terracotta-500 text-white' : 'bg-forest-950/60 border-forest-800 text-forest-200 hover:bg-forest-900'}">
-                    <div>
-                        <div class="text-xs font-semibold">${v.name}</div>
-                        <div class="text-[11px] text-forest-400">${v.subtitle}</div>
-                    </div>
-                    <div class="text-right font-mono">
-                        <span class="text-xs text-terracotta-300 block">$${v.wholesaleCost.toFixed(2)}</span>
-                        <span class="text-[10px] text-emerald-400">${v.humidityRetention}% RH</span>
-                    </div>
-                </button>
-            `).join('');
-
-            // 2. Populate Substrate Sliders
-            const subList = document.getElementById('substrateControlsList');
-            subList.innerHTML = SUBSTRATE_DEFS.map(s => `
-                <div class="bg-forest-950/70 p-2.5 rounded-xl border border-forest-800/80">
-                    <div class="flex justify-between text-xs mb-1">
-                        <span class="font-medium text-parchment-100">${s.name}</span>
-                        <span id="subVal-${s.id}" class="font-mono text-terracotta-300">${state.substrates[s.id]}mm</span>
-                    </div>
-                    <input type="range" min="${s.minMm}" max="${s.maxMm}" value="${state.substrates[s.id]}"
-                        oninput="updateSubstrateDepth('${s.id}', this.value)"
-                        class="w-full h-1.5 bg-forest-800 rounded-lg cursor-pointer">
-                    <div class="text-[10px] text-forest-400 mt-0.5">${s.role}</div>
-                </div>
-            `).join('');
-
-            // 3. Populate Biome Catalog
-            renderBiomeCatalog();
-
-            // 4. Populate Challenge Submission Markdown
-            populateSubmissionTemplate();
-        }
-
-        function renderBiomeCatalog() {
-            const grid = document.getElementById('catalogGrid');
-            const filtered = BIOME_CATALOG.filter(item => state.catalogFilter === 'all' || item.category === state.catalogFilter);
-
-            grid.innerHTML = filtered.map(item => `
-                <button onclick="addSpecimenToTerrarium('${item.id}')" class="p-2.5 rounded-xl bg-forest-950/80 hover:bg-forest-800 border border-forest-800 hover:border-terracotta-500/50 text-left transition flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-xl group-hover:scale-110 transition">${item.emoji}</span>
-                            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded ${item.biome === 'arid' ? 'bg-amber-500/20 text-amber-300' : 'bg-forest-800 text-emerald-300'}">$${item.wholesaleCost.toFixed(2)}</span>
-                        </div>
-                        <div class="text-xs font-semibold text-parchment-100 leading-tight">${item.name}</div>
-                        <div class="text-[10px] italic text-forest-400 truncate">${item.latin}</div>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-forest-800/80 flex items-center justify-between text-[10px] text-forest-300">
-                        <span>RH ${item.idealHumidity[0]}-${item.idealHumidity[1]}%</span>
-                        <span class="text-terracotta-400 font-semibold">+ Plant</span>
-                    </div>
-                </button>
-            `).join('');
-        }
-
-        function filterCatalog(cat) {
-            state.catalogFilter = cat;
-            ['all', 'plant', 'hardscape', 'fauna'].forEach(c => {
-                const btn = document.getElementById(`catFilter-${c}`);
-                if (c === cat) {
-                    btn.className = 'flex-1 py-1 rounded-lg bg-forest-700 text-white font-medium';
-                } else {
-                    btn.className = 'flex-1 py-1 rounded-lg text-forest-300 hover:text-white';
-                }
-            });
-            renderBiomeCatalog();
-        }
-
-        function switchLeftTab(tabName) {
-            ['vessel', 'substrate', 'flora'].forEach(t => {
-                const tabEl = document.getElementById(`leftTab-${t}`);
-                const btnEl = document.getElementById(`tabBtn-${t}`);
-                if (t === tabName) {
-                    tabEl.classList.remove('hidden');
-                    tabEl.classList.add('flex');
-                    btnEl.className = 'py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 bg-forest-700 text-white shadow transition';
-                } else {
-                    tabEl.classList.add('hidden');
-                    tabEl.classList.remove('flex');
-                    btnEl.className = 'py-2 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 text-forest-300 hover:text-white transition';
-                }
-            });
-        }
-
-        function selectVessel(vesselId) {
-            state.vesselId = vesselId;
-            initUIControls();
-            renderTerrariumCanvas();
-        }
-
-        function toggleCorkLid() {
-            state.isSealedLid = !state.isSealedLid;
-            const btn = document.getElementById('lidToggleBtn');
-            if (state.isSealedLid) {
-                btn.textContent = 'SEALED (CLOSED)';
-                btn.className = 'px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-emerald-600/30 text-emerald-300 border border-emerald-500/40';
-            } else {
-                btn.textContent = 'OPEN AIRFLOW';
-                btn.className = 'px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-amber-600/30 text-amber-300 border border-amber-500/40';
-            }
-            renderTerrariumCanvas();
-        }
-
-        function updateEnvironment() {
-            state.lightLevel = parseInt(document.getElementById('lightSlider').value, 10);
-            const label = document.getElementById('lightLevelLabel');
-            if (state.lightLevel < 35) label.textContent = `Low Shade (${state.lightLevel}%)`;
-            else if (state.lightLevel <= 75) label.textContent = `Indirect Bright (${state.lightLevel}%)`;
-            else label.textContent = `Direct Sun / High Lux (${state.lightLevel}%)`;
-            renderTerrariumCanvas();
-        }
-
-        function updateSubstrateDepth(subId, val) {
-            state.substrates[subId] = parseInt(val, 10);
-            document.getElementById(`subVal-${subId}`).textContent = `${val}mm`;
-            renderTerrariumCanvas();
-        }
-
-        function resetSubstrates() {
-            state.substrates = { leca: 24, charcoal: 10, sphagnum: 8, soil: 36, sand: 6 };
-            initUIControls();
-            renderTerrariumCanvas();
-        }
-
-        function loadPreset(presetKey) {
-            selectPlacedItem(null);
-            if (presetKey === 'zen') {
-                state.vesselId = 'apothecary';
-                state.isSealedLid = true;
-                state.substrates = { leca: 22, charcoal: 10, sphagnum: 8, soil: 34, sand: 10 };
-                state.placedItems = [
-                    { instanceId: 'p1', specId: 'seiryu-stone', x: 255, y: 362, scale: 1.35, rotation: -4, flipX: false },
-                    { instanceId: 'p2', specId: 'cushion-moss', x: 185, y: 366, scale: 1.2, rotation: 4, flipX: false },
-                    { instanceId: 'p3', specId: 'cushion-moss', x: 315, y: 368, scale: 1.1, rotation: -6, flipX: true },
-                    { instanceId: 'p4', specId: 'maidenhair-fern', x: 225, y: 358, scale: 1.05, rotation: -8, flipX: false },
-                    { instanceId: 'p5', specId: 'springtails', x: 250, y: 375, scale: 1.0, rotation: 0, flipX: false }
-                ];
-                showToast('Loaded "Zen Mossarium" preset');
-            } else if (presetKey === 'tropical') {
-                state.vesselId = 'wardian';
-                state.isSealedLid = true;
-                state.substrates = { leca: 26, charcoal: 12, sphagnum: 10, soil: 40, sand: 4 };
-                state.placedItems = [
-                    { instanceId: 't1', specId: 'spider-driftwood', x: 245, y: 350, scale: 1.35, rotation: 8, flipX: false },
-                    { instanceId: 't2', specId: 'maidenhair-fern', x: 195, y: 348, scale: 1.25, rotation: -12, flipX: false },
-                    { instanceId: 't3', specId: 'fittonia-pink', x: 285, y: 355, scale: 1.25, rotation: 10, flipX: false },
-                    { instanceId: 't4', specId: 'peperomia-caperata', x: 225, y: 356, scale: 1.05, rotation: -4, flipX: false },
-                    { instanceId: 't5', specId: 'cushion-moss', x: 160, y: 360, scale: 1.0, rotation: 5, flipX: false },
-                    { instanceId: 't6', specId: 'dwarf-isopods', x: 260, y: 365, scale: 1.0, rotation: 0, flipX: false }
-                ];
-                showToast('Loaded "Fittonia Rainforest" preset');
-            } else if (presetKey === 'desert') {
-                state.vesselId = 'flask';
-                state.isSealedLid = true;
-                state.substrates = { leca: 8, charcoal: 0, sphagnum: 12, soil: 42, sand: 12 };
-                state.placedItems = [
-                    { instanceId: 'd1', specId: 'echeveria-arid', x: 220, y: 365, scale: 1.3, rotation: 0, flipX: false },
-                    { instanceId: 'd2', specId: 'maidenhair-fern', x: 285, y: 362, scale: 1.2, rotation: 12, flipX: false },
-                    { instanceId: 'd3', specId: 'fittonia-pink', x: 255, y: 368, scale: 1.1, rotation: -5, flipX: false }
-                ];
-                showToast('Loaded "Bio-Conflict Test" — Check the Live Bio-Compatibility Alert!');
-            }
-            initUIControls();
-            renderTerrariumCanvas();
-            renderDefaultAiPreview();
-        }
-
-        /*************************************************************************
-         * 9. OPEN-SOURCE AI & GEMINI API SIDE-HUSTLE TOOLKIT
-         *************************************************************************/
-        function setAIEngineMode(mode) {
-            state.aiEngineMode = mode;
-            const localBtn = document.getElementById('modeLocalBtn');
-            const webgpuBtn = document.getElementById('modeWebGPUBtn');
-            const activePill = document.getElementById('activeModelPill');
-
-            if (mode === 'ollama') {
-                localBtn.className = 'px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 bg-forest-700 text-emerald-300 font-medium transition';
-                webgpuBtn.className = 'px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 text-forest-300 hover:text-white transition';
-                activePill.textContent = 'llama3.2-vision:11b';
-                showToast('Switched to Local Ollama + Gemini Hybrid Agent Harness');
-            } else {
-                webgpuBtn.className = 'px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 bg-forest-700 text-emerald-300 font-medium transition';
-                localBtn.className = 'px-2.5 py-1 rounded-lg font-mono flex items-center gap-1.5 text-forest-300 hover:text-white transition';
-                activePill.textContent = 'qwen2.5-coder:7b-q4';
-                showToast('Switched to Qwen-2.5 Structured JSON Mode');
-            }
-        }
-
-        function switchAiTab(tab) {
-            state.activeAiTab = tab;
-            ['listing', 'caresheet', 'audit'].forEach(t => {
-                const btn = document.getElementById(`aiTabBtn-${t}`);
-                if (t === tab) {
-                    btn.className = 'py-2 px-2 rounded-lg font-semibold bg-terracotta-600 text-white transition flex items-center justify-center gap-1';
-                } else {
-                    btn.className = 'py-2 px-2 rounded-lg font-semibold text-forest-300 hover:text-white transition flex items-center justify-center gap-1';
-                }
-            });
-            renderDefaultAiPreview();
-        }
-
-        function buildCurrentTerrariumContextSummary() {
-            const vessel = VESSELS.find(v => v.id === state.vesselId) || VESSELS[0];
-            const itemCounts = {};
-            state.placedItems.forEach(i => {
-                const spec = BIOME_CATALOG.find(b => b.id === i.specId);
-                if (spec) {
-                    itemCounts[spec.name] = (itemCounts[spec.name] || 0) + 1;
-                }
-            });
-            const floraSummary = Object.entries(itemCounts).map(([k, v]) => `${v}x ${k}`).join(', ') || 'Minimalist Zen Substrate Only';
-
-            return {
-                vesselName: vessel.name,
-                sealedState: state.isSealedLid ? 'Sealed Cork Enclosure' : 'Open Air Vessel',
-                substrates: `LECA ${state.substrates.leca}mm, Charcoal ${state.substrates.charcoal}mm, Sphagnum ${state.substrates.sphagnum}mm, ABG Soil ${state.substrates.soil}mm, Sand ${state.substrates.sand}mm`,
-                specimens: floraSummary,
-                bioScore: state.lastBioReport.score,
-                humidity: state.lastBioReport.effectiveHumidity,
-                warnings: state.lastBioReport.warnings,
-                cogs: state.economics.cogs,
-                retailPrice: state.economics.retailPrice,
-                netProfit: state.economics.netProfit,
-                marginPct: state.economics.marginPct
-            };
-        }
-
-        // Instant deterministic preview before user clicks Generate with LLM
-        function renderDefaultAiPreview() {
-            const ctx = buildCurrentTerrariumContextSummary();
-            const container = document.getElementById('aiOutputContainer');
-
-            if (state.activeAiTab === 'listing') {
-                container.innerHTML = `
-                    <div class="space-y-2.5 text-xs">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono uppercase text-terracotta-400 font-semibold">Live Etsy / Shopify Draft</span>
-                            <button onclick="copyAiOutputText()" class="text-xs text-emerald-300 hover:underline flex items-center gap-1">
-                                <i class="ph ph-copy"></i> Copy Listing
-                            </button>
-                        </div>
-                        <div class="p-2.5 rounded-lg bg-forest-900/90 border border-forest-700 font-semibold text-parchment-50" id="aiCopyTarget">
-                            Bespoke ${ctx.vesselName} Bio-Active Terrarium | Living Ecosystem with ${ctx.specimens} | Self-Sustaining Desk Botanical Gift ($${ctx.retailPrice})
-                        </div>
-                        <p class="text-forest-200 leading-relaxed">
-                            Hand-layered with ${ctx.substrates} for a ${ctx.humidity}% RH microclimate. Click <strong>"Generate"</strong> above to run deep AI storytelling, 13 Etsy SEO tags, and customer FAQ generation tailored to your exact plants.
-                        </p>
-                        <div class="flex flex-wrap gap-1 pt-1">
-                            <span class="px-2 py-0.5 rounded bg-forest-900 text-forest-300 font-mono text-[10px]">#BioactiveTerrarium</span>
-                            <span class="px-2 py-0.5 rounded bg-forest-900 text-forest-300 font-mono text-[10px]">#WardianCase</span>
-                            <span class="px-2 py-0.5 rounded bg-forest-900 text-forest-300 font-mono text-[10px]">#LivingArtGift</span>
-                            <span class="px-2 py-0.5 rounded bg-forest-900 text-forest-300 font-mono text-[10px]">#Mossarium</span>
-                        </div>
-                    </div>
-                `;
-            } else if (state.activeAiTab === 'caresheet') {
-                container.innerHTML = `
-                    <div class="parchment-card rounded-xl p-3.5 space-y-2 text-xs" id="aiCopyTarget">
-                        <div class="flex items-center justify-between border-b border-parchment-300 pb-2">
-                            <div>
-                                <h4 class="font-serif font-bold text-sm text-forest-900">Botanical Care Passport</h4>
-                                <p class="text-[11px] text-forest-700">${ctx.vesselName} • ${ctx.sealedState}</p>
-                            </div>
-                            <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-forest-800 text-parchment-50">RH ${ctx.humidity}%</span>
-                        </div>
-                        <div class="text-forest-900 space-y-1">
-                            <p><strong>Specimens:</strong> ${ctx.specimens}</p>
-                            <p><strong>Light:</strong> Bright indirect light (${state.lightLevel}% lux). Never place in direct midday sun to avoid glass magnification overheating.</p>
-                            <p><strong>Watering Cycle:</strong> ${state.isSealedLid ? 'Mist lightly only once every 4–6 weeks if condensation disappears.' : 'Mist 1–2 times weekly when top moss feels dry.'}</p>
-                        </div>
-                        <div class="pt-1 flex justify-end">
-                            <button onclick="copyAiOutputText()" class="text-[11px] font-semibold text-terracotta-700 hover:underline flex items-center gap-1">
-                                <i class="ph-bold ph-printer"></i> Copy Printable Card
-                            </button>
-                        </div>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div class="space-y-2 text-xs" id="aiCopyTarget">
-                        <div class="flex items-center justify-between">
-                            <span class="font-mono text-emerald-300 font-semibold">Bio-Doctor Pathology & Longevity Audit</span>
-                            <span class="font-mono text-xs">Score: ${ctx.bioScore}/100</span>
-                        </div>
-                        <p class="text-forest-200 leading-relaxed">
-                            Click <strong>"Generate"</strong> to run an AI botanical pathology simulation checking long-term root space, bryophyte acclimation, and shipping durability for this custom build.
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        // Exponential backoff helper for Gemini API
-        async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const res = await fetch(url, options);
-                    if (res.ok) return await res.json();
-                } catch (err) {
-                    // Silent retry
-                }
-                await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
-            }
-            throw new Error('Inference request timed out');
-        }
-
-        async function runAiGenerator() {
-            const btn = document.getElementById('generateAiBtn');
-            const btnText = document.getElementById('generateAiBtnText');
-            const latencyStat = document.getElementById('inferenceLatencyStat');
-            const container = document.getElementById('aiOutputContainer');
-            const customNote = document.getElementById('customAiToneInput').value.trim();
-
-            const ctx = buildCurrentTerrariumContextSummary();
-            const startTime = performance.now();
-
-            btn.disabled = true;
-            btnText.textContent = 'Running...';
-            latencyStat.textContent = 'Inferencing...';
-
-            container.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-10 text-center gap-2">
-                    <div class="w-8 h-8 border-2 border-terracotta-400 border-t-transparent rounded-full animate-spin"></div>
-                    <p class="text-xs font-mono text-emerald-300">Synthesizing via ${state.aiEngineMode === 'ollama' ? 'Llama-3.2 + Gemini Harness' : 'Qwen-2.5 Structured Engine'}...</p>
-                    <p class="text-[11px] text-forest-400">Analyzing ${ctx.specimens} in ${ctx.vesselName}</p>
-                </div>
-            `;
-
-            const systemPrompt = `You are an expert botanical terrarium artisan and e-commerce side-hustle strategist powered by an open-source AI agent harness. Respond in clean, structured JSON.`;
-
-            let userPrompt = '';
-            let responseSchema = {};
-
-            if (state.activeAiTab === 'listing') {
-                userPrompt = `Create a high-converting Etsy/Shopify product listing for this custom handmade terrarium:
-                - Vessel: ${ctx.vesselName} (${ctx.sealedState})
-                - Substrate Stratigraphy: ${ctx.substrates}
-                - Living Specimens & Hardscape: ${ctx.specimens}
-                - Internal Microclimate: ${ctx.humidity}% RH, Bio-Compatibility Score: ${ctx.bioScore}%
-                - Retail Price: $${ctx.retailPrice} (Raw COGS kept private: $${ctx.cogs}, Profit: $${ctx.netProfit})
-                - Seller Custom Note / Vibe: ${customNote || 'Artisan botanical desk centerpiece'}
-                Return JSON with title, hookParagraph, bulletHighlights (array of 4 strings), and seoTags (array of 13 Etsy tags).`;
-
-                responseSchema = {
-                    type: "OBJECT",
-                    properties: {
-                        title: { type: "STRING" },
-                        hookParagraph: { type: "STRING" },
-                        bulletHighlights: { type: "ARRAY", items: { type: "STRING" } },
-                        seoTags: { type: "ARRAY", items: { type: "STRING" } }
-                    },
-                    required: ["title", "hookParagraph", "bulletHighlights", "seoTags"]
-                };
-            } else if (state.activeAiTab === 'caresheet') {
-                userPrompt = `Generate a customer-facing Printable Botanical Care Card for this exact custom terrarium:
-                - Vessel: ${ctx.vesselName} (${ctx.sealedState})
-                - Substrate Layers: ${ctx.substrates}
-                - Specimens: ${ctx.specimens}
-                - Humidity: ${ctx.humidity}% RH, Light setting: ${state.lightLevel}%
-                - Seller Note: ${customNote || 'Standard home or office placement'}
-                Return JSON with ecosystemTitle, wateringSchedule, lightingGuide, condensationTip, and bioactiveNote.`;
-
-                responseSchema = {
-                    type: "OBJECT",
-                    properties: {
-                        ecosystemTitle: { type: "STRING" },
-                        wateringSchedule: { type: "STRING" },
-                        lightingGuide: { type: "STRING" },
-                        condensationTip: { type: "STRING" },
-                        bioactiveNote: { type: "STRING" }
-                    },
-                    required: ["ecosystemTitle", "wateringSchedule", "lightingGuide", "condensationTip", "bioactiveNote"]
-                };
-            } else {
-                userPrompt = `Perform a Botanical Pathology & Commercial Shipping Audit for this terrarium build:
-                - Vessel: ${ctx.vesselName} (${ctx.sealedState})
-                - Substrate Layers: ${ctx.substrates}
-                - Specimens: ${ctx.specimens}
-                - Current Warnings: ${ctx.warnings.join('; ') || 'None'}
-                - Seller Note: ${customNote || 'Local pickup & courier shipping'}
-                Return JSON with diagnosisHeadline, compatibilityFixes (array of 3 strings), and shippingPackingProtocol.`;
-
-                responseSchema = {
-                    type: "OBJECT",
-                    properties: {
-                        diagnosisHeadline: { type: "STRING" },
-                        compatibilityFixes: { type: "ARRAY", items: { type: "STRING" } },
-                        shippingPackingProtocol: { type: "STRING" }
-                    },
-                    required: ["diagnosisHeadline", "compatibilityFixes", "shippingPackingProtocol"]
-                };
-            }
-
-            try {
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-                const payload = {
-                    contents: [{ parts: [{ text: userPrompt }] }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] },
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: responseSchema
-                    }
-                };
-
-                const result = await fetchWithRetry(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const rawJson = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-                const data = JSON.parse(rawJson);
-                const elapsedSec = ((performance.now() - startTime) / 1000).toFixed(2);
-                latencyStat.textContent = `${elapsedSec}s • Local/Zero-Fee Mode`;
-
-                renderStructuredAiResult(data, ctx);
-            } catch (error) {
-                // Graceful deterministic fallback if offline
-                const elapsedSec = ((performance.now() - startTime) / 1000).toFixed(2);
-                latencyStat.textContent = `Offline Local Fallback (${elapsedSec}s)`;
-                renderOfflineFallbackResult(ctx);
-            } finally {
-                btn.disabled = false;
-                btnText.textContent = 'Generate';
-            }
-        }
-
-        function renderStructuredAiResult(data, ctx) {
-            const container = document.getElementById('aiOutputContainer');
-            if (state.activeAiTab === 'listing') {
-                container.innerHTML = `
-                    <div class="space-y-2.5 text-xs" id="aiCopyTarget">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono uppercase text-emerald-400 font-semibold">✨ AI Generated Etsy Listing ($${ctx.retailPrice})</span>
-                            <button onclick="copyAiOutputText()" class="text-xs text-terracotta-300 hover:underline flex items-center gap-1">
-                                <i class="ph-bold ph-copy"></i> Copy All
-                            </button>
-                        </div>
-                        <div class="p-2.5 rounded-lg bg-forest-900 border border-forest-700 font-semibold text-parchment-50">
-                            ${data.title}
-                        </div>
-                        <p class="text-forest-200 leading-relaxed">${data.hookParagraph}</p>
-                        <ul class="list-disc list-inside space-y-1 text-parchment-200">
-                            ${(data.bulletHighlights || []).map(b => `<li>${b}</li>`).join('')}
-                        </ul>
-                        <div class="pt-1">
-                            <span class="text-[10px] font-mono uppercase text-forest-400 block mb-1">13 High-Intent SEO Tags:</span>
-                            <div class="flex flex-wrap gap-1">
-                                ${(data.seoTags || []).map(tag => `<span class="px-2 py-0.5 rounded bg-forest-900 border border-forest-700 text-emerald-300 font-mono text-[10px]">#${tag.replace(/\s+/g, '')}</span>`).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (state.activeAiTab === 'caresheet') {
-                container.innerHTML = `
-                    <div class="parchment-card rounded-xl p-3.5 space-y-2 text-xs" id="aiCopyTarget">
-                        <div class="flex items-center justify-between border-b border-parchment-300 pb-2">
-                            <div>
-                                <h4 class="font-serif font-bold text-sm text-forest-900">${data.ecosystemTitle}</h4>
-                                <p class="text-[10px] font-mono text-forest-700">${ctx.vesselName} • Bio-Score ${ctx.bioScore}%</p>
-                            </div>
-                            <button onclick="copyAiOutputText()" class="px-2 py-1 rounded bg-forest-800 text-parchment-50 text-[10px] font-mono">Copy Card</button>
-                        </div>
-                        <div class="space-y-1.5 text-forest-900 leading-snug">
-                            <p><strong>💧 Hydration:</strong> ${data.wateringSchedule}</p>
-                            <p><strong>☀️ Lighting:</strong> ${data.lightingGuide}</p>
-                            <p><strong>🌫️ Fog Indicator:</strong> ${data.condensationTip}</p>
-                            <p><strong>🐞 Micro-Fauna:</strong> ${data.bioactiveNote}</p>
-                        </div>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div class="space-y-2.5 text-xs" id="aiCopyTarget">
-                        <div class="flex items-center justify-between">
-                            <span class="font-bold text-emerald-300">${data.diagnosisHeadline}</span>
-                            <button onclick="copyAiOutputText()" class="text-terracotta-300 hover:underline text-[11px]">Copy Audit</button>
-                        </div>
-                        <div class="space-y-1 text-parchment-200">
-                            ${(data.compatibilityFixes || []).map(f => `<div class="p-2 rounded-lg bg-forest-900/80 border border-forest-800">• ${f}</div>`).join('')}
-                        </div>
-                        <div class="p-2.5 rounded-lg bg-terracotta-950/50 border border-terracotta-700/50 text-parchment-100">
-                            <strong class="text-terracotta-300 block mb-0.5">📦 Safe Shipping Protocol:</strong>
-                            ${data.shippingPackingProtocol}
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        function renderOfflineFallbackResult(ctx) {
-            renderStructuredAiResult({
-                title: `Handcrafted ${ctx.vesselName} Living Terrarium | Bio-Active Micro-Ecosystem (${ctx.specimens})`,
-                hookParagraph: `Bring a self-sustaining slice of cloud forest to your desk. Built inside a ${ctx.vesselName} with a 5-stage stratigraphy (${ctx.substrates}), this living ecosystem maintains ${ctx.humidity}% relative humidity naturally.`,
-                bulletHighlights: [
-                    `Custom 5-layer bio-substrate with LECA false bottom & activated horticultural charcoal`,
-                    `Planted with live ${ctx.specimens}`,
-                    `Bio-Compatibility Score: ${ctx.bioScore}% (${ctx.sealedState})`,
-                    `Includes printed Botanical Care Passport & live-arrival guarantee`
-                ],
-                seoTags: ['BioactiveTerrarium', 'GlassWardianCase', 'LivingPlantGift', 'MossariumArt', 'FittoniaTerrarium', 'SelfWateringPlant', 'DeskZenGarden', 'BotanicalHomeDecor', 'SpringtailCleanUp', 'ArtisanPlantShop', 'ClosedEcosystem', 'MicroLandscape', 'RarePlantGift'],
-                ecosystemTitle: `Care Passport: ${ctx.vesselName}`,
-                wateringSchedule: state.isSealedLid ? 'Closed loop cycle: mist only 3-4 sprays of distilled water every 5 weeks if morning condensation vanishes.' : 'Open vessel: mist twice weekly using dechlorinated or rainwater.',
-                lightingGuide: `Keep in bright, filtered indirect light (${state.lightLevel}% lux). Avoid direct window sunbeams which can overheat glass.`,
-                condensationTip: 'Light morning fog on the glass is healthy! If heavy droplets obscure the glass all day, crack the lid for 4 hours.',
-                bioactiveNote: 'Springtails & isopods convert decaying leaves into organic plant nutrition automatically.',
-                diagnosisHeadline: `Pathology & Longevity Audit (${ctx.bioScore}% Score)`,
-                compatibilityFixes: [
-                    ctx.warnings[0] || 'Stratigraphy drainage depth is well-proportioned for root oxygenation.',
-                    'Prune cascading fronds if foliage presses directly against wet glass walls.',
-                    'Use distilled or RO water exclusively to prevent hard-water calcium spots on the glass.'
-                ],
-                shippingPackingProtocol: 'Mist lightly 24h prior to shipping, immobilize hardscape stones with damp sphagnum moss plugs, and double-box with biodegradable thermal insulation.'
-            }, ctx);
-        }
-
-        /*************************************************************************
-         * 10. OPEN-SOURCE CHALLENGE SUBMISSION & EXPORT UTILITIES
-         *************************************************************************/
-        function populateSubmissionTemplate() {
-            const md = [
-                "# 🌱 TerraForge Studio: Open-Source AI CAD & Unit-Economics Co-Pilot for Boutique Terrarium Makers",
-                "",
-                "### Built for the \"Side Hustle\" Open-Source AI Challenge",
-                "",
-                "### 1. The Real Problem We Solved",
-                "Boutique terrarium artists and local plant shop side-hustlers spend hours designing custom glass ecosystems, calculating raw substrate & specimen costs, writing custom care cards for every buyer, and drafting SEO-optimized Etsy listings. Worse, general-purpose cloud AI tools charge $20–$30/month, require constant internet at weekend farmers markets, and often hallucinate fatal plant combinations (like sealing arid Echeveria succulents inside a 90% humidity Wardian case).",
-                "",
-                "### 2. Why Open Innovation & Local Open-Weight Models Matter Here",
-                "* **100% Private Wholesale Margins & Vendor Data:** Makers input their exact wholesale COGS for glassware, rare Marcgravia clippings, and labor buffers. Running inference locally on **Ollama (llama3.2-vision:11b / qwen2.5-coder:7b)** means proprietary supplier pricing never leaves the shop owner's laptop.",
-                "* **$0 Marginal API Cost for Small Craft Margins:** When selling a $65–$95 handmade terrarium, paying per-seat SaaS fees or metered cloud tokens eats directly into artisan profit. Local inference costs **$0.00 per listing** and works offline at pop-up craft markets.",
-                "* **Deterministic Botanical Guardrails + Structured JSON Schema:** Unlike closed black-box wrappers, our open-source agent harness runs a deterministic **Bio-Compatibility & Stratigraphy Engine** first (checking LECA drainage depth, activated charcoal filtration, and RH% conflicts) and injects those verified physical constraints directly into the open-weight model's structured JSON prompt.",
-                "",
-                "### 3. Tech Stack & Open Pieces",
-                "* **Local Inference Engine:** Ollama local endpoint bridge (http://localhost:11434/api/generate) running llama3.2:3b / qwen2.5:7b with WebGPU/Cloud fallback.",
-                "* **Interactive Vector CAD & Microclimate Simulator:** Real-time SVG stratigraphy & drag-and-drop botanical specimen canvas.",
-                "* **Agent Session & Build Verification:** Saved via DevRelay to document iterative prompt engineering and schema validation."
-            ].join("\n");
-
-            document.getElementById('submissionMarkdownBox').value = md;
-        }
-
-        async function testOllamaConnection() {
-            const url = document.getElementById('ollamaUrlInput').value.trim();
-            const model = document.getElementById('ollamaModelNameInput').value.trim();
-            const statusEl = document.getElementById('ollamaPingStatus');
-            statusEl.textContent = `Pinging ${url} with model "${model}"...`;
-            statusEl.className = 'text-[11px] font-mono text-amber-300 mt-2';
-
-            try {
-                const res = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ model: model, prompt: 'Ping', stream: false })
-                });
-                if (res.ok) {
-                    statusEl.textContent = `✅ Connected to local Ollama (${model})! Zero-cloud local inference active.`;
-                    statusEl.className = 'text-[11px] font-mono text-emerald-400 mt-2';
-                    showToast(`Connected to Local Ollama (${model})`);
-                } else {
-                    throw new Error('Non-200 status');
-                }
-            } catch (e) {
-                statusEl.textContent = `ℹ️ Localhost Ollama not detected on port 11434 (or CORS blocked). Using built-in browser hybrid engine seamlessly.`;
-                statusEl.className = 'text-[11px] font-mono text-terracotta-300 mt-2';
-            }
-        }
-
-        function copyTextToClipboard(text, message) {
-            const ta = document.createElement('textarea');
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToast(message || 'Copied to clipboard!');
-        }
-
-        function copyAiOutputText() {
-            const target = document.getElementById('aiCopyTarget');
-            if (!target) return;
-            copyTextToClipboard(target.innerText, 'Copied AI deliverable to clipboard!');
-        }
-
-        function copySubmissionMarkdown() {
-            const box = document.getElementById('submissionMarkdownBox');
-            copyTextToClipboard(box.value, 'Copied Dev.to Challenge Submission Markdown!');
-        }
-
-        function exportTerrariumSnapshot() {
-            const svgEl = document.getElementById('terrariumSvg');
-            const serializer = new XMLSerializer();
-            const svgString = serializer.serializeToString(svgEl);
-            const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `terraforge-${state.vesselId}-blueprint.svg`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast('Downloaded SVG Terrarium Blueprint!');
-        }
-
-        function openModal(id) {
-            const m = document.getElementById(id);
-            m.classList.remove('hidden');
-            m.classList.add('flex');
-        }
-
-        function closeModal(id) {
-            const m = document.getElementById(id);
-            m.classList.add('hidden');
-            m.classList.remove('flex');
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toastNotification');
-            document.getElementById('toastMessage').textContent = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            clearTimeout(window._toastTimer);
-            window._toastTimer = setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 2800);
-        }
-
-        // Explicitly expose all handlers on window for inline event attributes
-        Object.assign(window, {
-            loadPreset,
-            setAIEngineMode,
-            openModal,
-            closeModal,
-            switchLeftTab,
-            toggleCorkLid,
-            updateEnvironment,
-            resetSubstrates,
-            filterCatalog,
-            deleteSelectedItem,
-            updateSelectedItemTransform,
-            changeSelectedItemLayer,
-            flipSelectedItem,
-            exportTerrariumSnapshot,
-            recalculateEconomics,
-            switchAiTab,
-            runAiGenerator,
-            testOllamaConnection,
-            copySubmissionMarkdown,
-            copyAiOutputText,
-            selectVessel,
-            updateSubstrateDepth,
-            addSpecimenToTerrarium
-        });
-
-        // Initialize immediately and on DOMContentLoaded
-        if (document.readyState === 'loading') {
-            window.addEventListener('DOMContentLoaded', () => loadPreset('tropical'));
-        } else {
-            loadPreset('tropical');
-        }
-    </script>
+    <!-- Main ES Module Application Script -->
+    <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>

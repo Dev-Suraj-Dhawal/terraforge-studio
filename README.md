@@ -156,19 +156,25 @@ To enable offline, zero-cloud AI inference directly from your local GPU:
 
 ---
 
-## 📁 Repository Structure
+## 📁 Modular Repository Structure
 
 ```text
 terraforge-studio/
-├── .gitignore          # Production git ignore configuration
-├── README.md           # Comprehensive project architectural guide
-└── index.html          # Unified reactive single-page studio application
-                        #  ├── Tailwind CSS Styling & Glassmorphism Theme
-                        #  ├── Phosphor Web Iconography
-                        #  ├── Interactive SVG Terrarium CAD Engine
-                        #  ├── Biological Diagnostic Rules Engine
-                        #  ├── Dynamic Margin & BOM Calculator
-                        #  └── Local Ollama & Hybrid AI Harness
+├── index.html                   # Semantic entry point with Tailwind & glassmorphism layout
+├── assets/
+│   ├── css/
+│   │   └── style.css            # Custom animations, glassmorphic panels, and range styling
+│   └── js/
+│       ├── catalog.js           # Vessel specs, substrate definitions & botanical palette
+│       ├── state.js             # Reactive application state, drag tracking & presets
+│       ├── vector-engine.js     # SVG vector art renderers, canvas transforms & blueprint export
+│       ├── bio-simulator.js     # Microclimate RH% calculations & pathology diagnostics
+│       ├── economics.js         # Real-time BOM costing, labor buffers & retail margins
+│       ├── ai-copilot.js        # Ollama local bridge, structured schema generators & prompt chips
+│       └── app.js               # UI tab routing, event orchestration, modal controls & bootstrap
+├── .gitignore                   # Production git exclusion rules
+├── LICENSE                      # MIT Open-Source License
+└── README.md                    # Comprehensive architectural and user documentation
 ```
 
 ---
@@ -198,3 +204,4 @@ TerraForge Studio was designed around the principle that **open-source AI democr
 ## 📄 License
 
 This project is open-source under the **[MIT License](LICENSE)**. Feel free to fork, customize, and deploy it for your own botanical studio or craft commerce venture.
+
