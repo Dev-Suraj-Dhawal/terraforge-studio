@@ -3,10 +3,11 @@
 > **Interactive Terrarium CAD, Real-Time Microclimate Bio-Simulator & Local Open-Weight AI Side-Hustle Operating System**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://terraforge-studio.vercel.app)
 [![Local-First AI](https://img.shields.io/badge/AI-Local--First%20(Ollama)-emerald?logo=ollama)](https://ollama.ai)
 [![Zero API Costs](https://img.shields.io/badge/Margin-$0.00%20Cloud%20API%20Fee-blue)](#-commercial-unit-economics--margin-engine)
 [![Pure Vanilla Architecture](https://img.shields.io/badge/Stack-Vanilla%20JS%20+%20SVG%20+%20Tailwind-orange)](#-technical-architecture)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)](#)
+[![Live Demo](https://img.shields.io/badge/Demo-terraforge--studio.vercel.app-brightgreen)](https://terraforge-studio.vercel.app)
 
 ---
 
@@ -115,7 +116,14 @@ flowchart TD
 
 TerraForge Studio is lightweight, zero-dependency, and ready to run immediately.
 
-### Option A: Direct Web Server (Recommended)
+### Option A: Instant Live Web App (Vercel)
+
+Open the production app directly in any browser with zero installation:  
+🌐 **[https://terraforge-studio.vercel.app](https://terraforge-studio.vercel.app)**
+
+---
+
+### Option B: Local Web Server
 
 #### Using Python 3:
 ```powershell
@@ -134,7 +142,7 @@ npx serve -l 8080 .
 
 ---
 
-### Option B: Connecting Local Ollama for Free Local AI Inference
+### Option C: Connecting Local Ollama for Free Local AI Inference
 
 To enable offline, zero-cloud AI inference directly from your local GPU:
 

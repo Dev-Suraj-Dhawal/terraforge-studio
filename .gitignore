@@ -24,3 +24,5 @@ pnpm-lock.yaml
 SUBMISSION_DRAFT.md
 *.submission.md
 drafts/
+
+.vercel
