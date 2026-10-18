@@ -20,3 +20,7 @@ pnpm-lock.yaml
 *.sublime-project
 *.sublime-workspace
 
+# Private Challenge Submissions & Unpushed Drafts
+SUBMISSION_DRAFT.md
+*.submission.md
+drafts/
